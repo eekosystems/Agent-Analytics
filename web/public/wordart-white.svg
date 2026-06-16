@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200" fill="none" role="img" aria-label="Agent Analytics">
+  <rect x="8" y="60" width="80" height="80" rx="18" fill="#6366F1"/>
+  <rect x="26" y="98" width="9" height="22" rx="2.5" fill="#FFFFFF"/>
+  <rect x="43.5" y="86" width="9" height="34" rx="2.5" fill="#FFFFFF"/>
+  <rect x="61" y="72" width="9" height="48" rx="2.5" fill="#C7D2FE"/>
+  <text x="112" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="104" font-weight="700" letter-spacing="-3" fill="#FFFFFF">Agent<tspan fill="#A5B4FC">Analytics</tspan></text>
+</svg>
