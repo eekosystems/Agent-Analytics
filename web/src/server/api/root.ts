@@ -59,6 +59,7 @@ import { notificationPreferencesRouter } from "@/src/server/api/routers/notifica
 import { webCalloutsRouter } from "@/src/features/web-callouts/server/router";
 import { inAppAgentRouter } from "@/src/ee/features/in-app-agent/server/router";
 import { decisionIntelligenceRouter } from "@/src/features/decision-intelligence/server/decisionIntelligenceRouter";
+import { errorReportingRouter } from "@/src/features/error-reporting/server/errorReportingRouter";
 
 /**
  * This is the primary router for your server.
@@ -126,6 +127,7 @@ export const appRouter = createTRPCRouter({
   webCallouts: webCalloutsRouter,
   inAppAgent: inAppAgentRouter,
   decisionIntelligence: decisionIntelligenceRouter,
+  errorReporting: errorReportingRouter,
 });
 
 // export type definition of API
