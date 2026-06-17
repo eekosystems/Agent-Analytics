@@ -4,7 +4,9 @@
 # Step 2 (custom branding) switches the web/worker services to a source build.
 services:
   langfuse-worker:
-    image: docker.io/langfuse/langfuse-worker:3
+    build:
+      context: .
+      dockerfile: ./worker/Dockerfile
     restart: always
     depends_on: &depends-on
       postgres:
@@ -53,7 +55,9 @@ services:
       start_interval: 5s
 
   langfuse-web:
-    image: docker.io/langfuse/langfuse:3
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
     restart: always
     depends_on: *depends-on
     expose:
