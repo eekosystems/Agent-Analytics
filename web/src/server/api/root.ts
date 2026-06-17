@@ -58,6 +58,7 @@ import { naturalLanguageFilterRouter } from "@/src/features/natural-language-fil
 import { notificationPreferencesRouter } from "@/src/server/api/routers/notificationPreferences";
 import { webCalloutsRouter } from "@/src/features/web-callouts/server/router";
 import { inAppAgentRouter } from "@/src/ee/features/in-app-agent/server/router";
+import { decisionIntelligenceRouter } from "@/src/features/decision-intelligence/server/decisionIntelligenceRouter";
 
 /**
  * This is the primary router for your server.
@@ -124,6 +125,7 @@ export const appRouter = createTRPCRouter({
   notificationPreferences: notificationPreferencesRouter,
   webCallouts: webCalloutsRouter,
   inAppAgent: inAppAgentRouter,
+  decisionIntelligence: decisionIntelligenceRouter,
 });
 
 // export type definition of API

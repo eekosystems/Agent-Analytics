@@ -128,6 +128,13 @@ export const ROUTES: Route[] = [
     section: RouteSection.Main,
   },
   {
+    title: "Decision Intelligence",
+    pathname: `/project/[projectId]/decision-intelligence`,
+    icon: Sparkle,
+    group: RouteGroup.Observability,
+    section: RouteSection.Main,
+  },
+  {
     title: "Monitors",
     pathname: "/project/[projectId]/monitors",
     icon: BellRing,
