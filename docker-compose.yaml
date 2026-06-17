@@ -4,9 +4,7 @@
 # Step 2 (custom branding) switches the web/worker services to a source build.
 services:
   langfuse-worker:
-    build:
-      context: .
-      dockerfile: ./worker/Dockerfile
+    image: ghcr.io/eekosystems/agent-analytics-worker:latest
     restart: always
     depends_on: &depends-on
       postgres:
@@ -55,9 +53,7 @@ services:
       start_interval: 5s
 
   langfuse-web:
-    build:
-      context: .
-      dockerfile: ./web/Dockerfile
+    image: ghcr.io/eekosystems/agent-analytics-web:latest
     restart: always
     depends_on: *depends-on
     expose:
