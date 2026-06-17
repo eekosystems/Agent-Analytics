@@ -1,12 +1,12 @@
 # Deploying Agent-Analytics to Coolify
 
-This is a white-labeled fork of Langfuse (MIT core). The rebranded web + worker
-images are **prebuilt by GitHub Actions** (`.github/workflows/build-images.yml`)
-and pushed to GHCR, so Coolify just pulls them — no on-server compile.
+This is a white-labeled fork of Langfuse (MIT core). The web + worker images are
+built **from source** on the Coolify server so the Agent-Analytics branding is
+baked in.
 
 ## Prerequisites
-- A Coolify server with Docker (no heavy build needed — images are pulled
-  prebuilt from GHCR).
+- A Coolify server with Docker (the build is heavy — give it **at least 4 GB RAM
+  free** for the Next.js build, ideally 8 GB).
 - This repo connected to Coolify (GitHub source).
 - A domain/subdomain pointed at your Coolify server (e.g. `analytics.yourdomain.com`).
 
@@ -34,7 +34,7 @@ and pushed to GHCR, so Coolify just pulls them — no on-server compile.
    - On the `langfuse-web` service, set the domain to your FQDN and **port `3000`**.
    - Only `langfuse-web` is exposed; postgres/clickhouse/redis/minio stay internal.
 
-4. **Deploy.** Coolify pulls the prebuilt web/worker images from GHCR (fast — no compile).
+4. **Deploy.** First build takes several minutes (compiles the Next.js app + worker).
    When healthy, open your domain — you should see the **Agent-Analytics** sign-in page.
 
 5. **Create the first account**

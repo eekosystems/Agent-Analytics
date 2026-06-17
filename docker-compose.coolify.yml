@@ -1,7 +1,6 @@
 # Agent-Analytics — Coolify deployment (white-labeled fork)
-# Pulls the rebranded web + worker images prebuilt by GitHub Actions
-# (.github/workflows/build-images.yml) from GHCR, so the Coolify server never
-# has to compile from source. All other services use stock images.
+# Builds the rebranded web + worker images FROM SOURCE on the Coolify server so
+# the Agent-Analytics branding is baked in. All other services use stock images.
 #
 # In Coolify: create a "Docker Compose" resource pointing at this repo and set
 # this file as the compose path. Set every secret below in Coolify's Environment
@@ -9,7 +8,9 @@
 # `langfuse-web` service on port 3000.
 services:
   langfuse-worker:
-    image: ghcr.io/eekosystems/agent-analytics-worker:latest
+    build:
+      context: .
+      dockerfile: ./worker/Dockerfile
     restart: always
     depends_on: &depends-on
       postgres:
@@ -58,7 +59,9 @@ services:
       start_interval: 2s
 
   langfuse-web:
-    image: ghcr.io/eekosystems/agent-analytics-web:latest
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
     restart: always
     depends_on: *depends-on
     expose:
