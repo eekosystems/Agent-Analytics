@@ -22,6 +22,7 @@ export type AuditableResource =
   | "observation"
   | "score"
   | "scoreConfig"
+  | "businessEventConfig"
   | "model"
   | "notificationPreference"
   | "prompt"

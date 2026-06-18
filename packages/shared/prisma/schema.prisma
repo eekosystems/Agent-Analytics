@@ -175,6 +175,8 @@ model Project {
   InAppAgentConversation    InAppAgentConversation[]
   InAppAgentEvent           InAppAgentEvent[]
   InAppAgentRun             InAppAgentRun[]
+  BusinessEventConfig       BusinessEventConfig[]
+  BusinessEvent             BusinessEvent[]
 
   @@index([orgId])
   @@map("projects")
@@ -572,6 +574,60 @@ enum ScoreConfigDataType {
   NUMERIC
   BOOLEAN
   TEXT
+}
+
+/// A user-defined business outcome type, e.g. "qualified_lead", "booked_call",
+/// "signed_contract". This is the "custom event name" users create. Occurrences
+/// are recorded as BusinessEvent rows and attributed to traces for
+/// cost-per-outcome and revenue/ROI analytics.
+model BusinessEventConfig {
+  id          String          @id @default(cuid())
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @default(now()) @updatedAt @map("updated_at")
+  projectId   String          @map("project_id")
+  project     Project         @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  /// Machine-friendly event name, unique per project (e.g. "qualified_lead").
+  name        String
+  description String?
+  /// Optional unit label for the value field, e.g. "USD". Display only.
+  unit        String?
+  isArchived  Boolean         @default(false) @map("is_archived")
+  events      BusinessEvent[]
+
+  @@unique([projectId, name])
+  @@unique([id, projectId]) // used for upserts via prisma
+  @@index([projectId])
+  @@map("business_event_configs")
+}
+
+/// A single recorded occurrence of a business outcome, optionally attributed to
+/// a trace (for cost attribution) and/or a client, and optionally carrying a
+/// monetary value (revenue / deal size).
+model BusinessEvent {
+  id            String              @id @default(cuid())
+  createdAt     DateTime            @default(now()) @map("created_at")
+  timestamp     DateTime            @default(now())
+  projectId     String              @map("project_id")
+  project       Project             @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  configId      String              @map("config_id")
+  config        BusinessEventConfig @relation(fields: [configId], references: [id], onDelete: Cascade)
+  /// Denormalised config name so events can be grouped without a join.
+  name          String
+  /// Trace this outcome is attributed to. Drives cost-per-outcome.
+  traceId       String?             @map("trace_id")
+  observationId String?             @map("observation_id")
+  /// End-customer this outcome belongs to. Mirrors observation metadata
+  /// `client_id` so outcomes line up with client profitability.
+  clientId      String?             @map("client_id")
+  /// Optional monetary value of the outcome (revenue, deal size, ...).
+  value         Float?
+  metadata      Json?
+
+  @@unique([id, projectId]) // used for upserts via prisma
+  @@index([projectId, configId, timestamp])
+  @@index([projectId, traceId])
+  @@index([projectId, clientId])
+  @@map("business_events")
 }
 
 model AnnotationQueue {

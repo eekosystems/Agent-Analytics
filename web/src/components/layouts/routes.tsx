@@ -135,6 +135,13 @@ export const ROUTES: Route[] = [
     section: RouteSection.Main,
   },
   {
+    title: "Business Outcomes",
+    pathname: `/project/[projectId]/business-events`,
+    icon: SquarePercent,
+    group: RouteGroup.Observability,
+    section: RouteSection.Main,
+  },
+  {
     title: "Error Reporting",
     pathname: `/project/[projectId]/error-reporting`,
     icon: BellRing,

@@ -59,6 +59,7 @@ import { notificationPreferencesRouter } from "@/src/server/api/routers/notifica
 import { webCalloutsRouter } from "@/src/features/web-callouts/server/router";
 import { inAppAgentRouter } from "@/src/ee/features/in-app-agent/server/router";
 import { decisionIntelligenceRouter } from "@/src/features/decision-intelligence/server/decisionIntelligenceRouter";
+import { businessEventsRouter } from "@/src/features/business-events/server/businessEventsRouter";
 import { errorReportingRouter } from "@/src/features/error-reporting/server/errorReportingRouter";
 
 /**
@@ -127,6 +128,7 @@ export const appRouter = createTRPCRouter({
   webCallouts: webCalloutsRouter,
   inAppAgent: inAppAgentRouter,
   decisionIntelligence: decisionIntelligenceRouter,
+  businessEvents: businessEventsRouter,
   errorReporting: errorReportingRouter,
 });
 
