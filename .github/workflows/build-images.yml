@@ -41,6 +41,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Private-repo runners are only 2 vCPU / 7 GB. The web Next.js build asks
+      # for up to 75% of RAM as Node heap (web/Dockerfile), which starves the
+      # runner and kills it ("lost communication with the server"). Free disk and
+      # add swap so the build has headroom instead of OOM-ing.
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc \
+            /opt/hostedtoolcache/CodeQL /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" || true
+          df -h /
+
+      - name: Add swap space
+        run: |
+          sudo swapoff -a || true
+          sudo fallocate -l 12G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -h
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
