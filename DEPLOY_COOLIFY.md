@@ -1,14 +1,36 @@
 # Deploying Agent-Analytics to Coolify
 
 This is a white-labeled fork of Langfuse (MIT core). The web + worker images are
-built **from source** on the Coolify server so the Agent-Analytics branding is
-baked in.
+**prebuilt by GitHub Actions** (`.github/workflows/build-images.yml`) on GitHub's
+16 GB runners and pushed to GHCR. Coolify only **pulls** them.
+
+> ⚠️ **Do NOT build these images on the Coolify server.** The Next.js monorepo
+> build asks for up to 75% of system RAM (`web/Dockerfile`) and, alongside
+> ClickHouse/Postgres/Redis/MinIO, will OOM-kill and lock up small/medium boxes.
+> Keep the compose on `image:` references, never `build:`.
 
 ## Prerequisites
-- A Coolify server with Docker (the build is heavy — give it **at least 4 GB RAM
-  free** for the Next.js build, ideally 8 GB).
+- A Coolify server with Docker (pulling images is light — **2 GB RAM** is fine
+  for runtime; no build headroom needed).
 - This repo connected to Coolify (GitHub source).
 - A domain/subdomain pointed at your Coolify server (e.g. `analytics.yourdomain.com`).
+- The image build workflow has run at least once on `main` (GitHub → **Actions**
+  → *Build Agent-Analytics images* is green, and the two packages appear under
+  your GitHub **Packages**).
+
+## Image registry auth (one-time)
+
+Coolify must be able to pull `ghcr.io/eekosystems/agent-analytics-{web,worker}`.
+Pick one:
+
+- **A. Make the packages public (simplest).** GitHub → your profile/org →
+  **Packages** → `agent-analytics-web` → *Package settings* → *Change visibility*
+  → **Public**. Repeat for `agent-analytics-worker`. No credentials on the server.
+  (The images hold only application code — runtime secrets are injected by Coolify,
+  not baked in.)
+- **B. Keep them private + add a credential.** Create a GitHub PAT (classic) with
+  `read:packages`. In Coolify, add a Docker registry (`ghcr.io`, your GitHub
+  username, the PAT as password) so the server can authenticate the pull.
 
 ## Steps
 
@@ -34,8 +56,12 @@ baked in.
    - On the `langfuse-web` service, set the domain to your FQDN and **port `3000`**.
    - Only `langfuse-web` is exposed; postgres/clickhouse/redis/minio stay internal.
 
-4. **Deploy.** First build takes several minutes (compiles the Next.js app + worker).
-   When healthy, open your domain — you should see the **Agent-Analytics** sign-in page.
+4. **Deploy.** Coolify pulls the prebuilt images (no compile) and starts the
+   stack; the web/worker containers run DB migrations on boot. When healthy, open
+   your domain — you should see the **Agent-Analytics** sign-in page.
+   - To ship code changes: push to `main`, wait for the *Build Agent-Analytics
+     images* workflow to go green, then **Redeploy** in Coolify (enable
+     *Force pull* / "pull latest images" so it fetches the new `:latest`).
 
 5. **Create the first account**
    - The first user to sign up becomes the instance owner. Then create an
