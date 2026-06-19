@@ -403,7 +403,7 @@ function VerifiedSignupFlow({
     return (
       <>
         <Head>
-          <title>Verify your email | Agent-Analytics</title>
+          <title>Verify your email | Active Trace</title>
         </Head>
         <div className="flex flex-1 flex-col py-6 sm:min-h-full sm:justify-center sm:px-6 sm:py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -543,7 +543,7 @@ function SignupPageShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Head>
-        <title>Sign up | Agent-Analytics</title>
+        <title>Sign up | Active Trace</title>
         <meta
           name="description"
           content="Create an account, no credit card required."

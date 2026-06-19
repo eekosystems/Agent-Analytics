@@ -98,7 +98,7 @@ export const ResizableImage = ({
     );
   }
 
-  const displayError = `Cannot load image. ${src.includes("http") ? "Http images are not rendered in Agent-Analytics for security reasons" : "Invalid image URL"}`;
+  const displayError = `Cannot load image. ${src.includes("http") ? "Http images are not rendered in Active Trace for security reasons" : "Invalid image URL"}`;
 
   return (
     <div>

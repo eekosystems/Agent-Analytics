@@ -140,7 +140,7 @@ export class WebhookActionHandler implements BaseActionHandler<WebhookActionForm
             defaultHeaderKeys.includes(header.name.trim().toLowerCase())
           ) {
             errors.push(
-              `Header ${index + 1}: "${header.name}" is automatically added by Langfuse and cannot be customized`,
+              `Header ${index + 1}: "${header.name}" is automatically added by Active Trace and cannot be customized`,
             );
           }
         }

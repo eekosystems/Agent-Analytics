@@ -36,7 +36,7 @@ export const [createEvaluationRuleTool, handleCreateEvaluationRule] =
     name: "createEvaluationRule",
     description: [
       "Create an evaluation rule that runs an evaluator on new observations or experiment items.",
-      "Set target to `observation` or `experiment`. For `llm_as_judge` evaluators provide a variable mapping; for `code` evaluators omit mapping (Langfuse manages it).",
+      "Set target to `observation` or `experiment`. For `llm_as_judge` evaluators provide a variable mapping; for `code` evaluators omit mapping (Active Trace manages it).",
     ].join(" "),
     baseSchema: CreateEvaluationRuleBaseSchema,
     inputSchema: PostUnstableEvaluationRuleBody,

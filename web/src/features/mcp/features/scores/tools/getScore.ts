@@ -13,7 +13,7 @@ import { ScoresApiService } from "@/src/features/public-api/server/scores-api-se
 export const [getScoreTool, handleGetScore] = defineTool({
   name: "getScore",
   description: [
-    "Fetch one score by ID from the current Langfuse project.",
+    "Fetch one score by ID from the current Active Trace project.",
     "Score reads are eventually consistent: a score created with createScore may not be returned by getScore immediately. If a newly created score is not found, wait briefly and retry.",
   ].join("\n"),
   baseSchema: GetScoreQueryV2,

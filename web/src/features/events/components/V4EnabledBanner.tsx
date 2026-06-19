@@ -65,7 +65,7 @@ export function V4EnabledBanner() {
         <ZapIcon className="h-4 w-4 shrink-0" />
         <p className="flex flex-1 flex-row gap-1 text-sm">
           <span className="font-semibold">
-            Faster Agent-Analytics experience enabled (preview).
+            Faster Active Trace experience enabled (preview).
           </span>{" "}
           Missing real-time data? Upgrade your Langfuse SDK to the latest major
           version.{" "}

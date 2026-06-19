@@ -16,12 +16,12 @@ import { Button } from "@/src/components/ui/button";
 
 const IN_APP_AGENT_PREVIEW_ITEM = {
   id: "in-app-agent",
-  title: "Agent-Analytics Assistant",
-  sidebarLabel: "Agent-Analytics Assistant",
+  title: "Active Trace Assistant",
+  sidebarLabel: "Active Trace Assistant",
   description:
-    "Explore project data, understand connected Langfuse resources, and get practical help while investigating your application.",
+    "Explore project data, understand connected Active Trace resources, and get practical help while investigating your application.",
   details:
-    "This experimental preview can help you inspect traces and observations, look up related scores or prompts, and answer practical questions while you work in a project. Today, it is most useful for exploring project data and understanding how different Langfuse resources connect. Over time, the goal is to help teams generate insights faster and improve their agentic products with less manual investigation.",
+    "This experimental preview can help you inspect traces and observations, look up related scores or prompts, and answer practical questions while you work in a project. Today, it is most useful for exploring project data and understanding how different Active Trace resources connect. Over time, the goal is to help teams generate insights faster and improve their agentic products with less manual investigation.",
   feedbackUrl: "https://github.com/orgs/langfuse/discussions/14196",
 } as const;
 
@@ -135,12 +135,12 @@ function PreviewMockupPanel() {
     <div className="border-border bg-muted/30 mt-6 overflow-hidden rounded-2xl border shadow-inner">
       <Image
         src={inAppAgentLightIllustration}
-        alt="Agent-Analytics Assistant connects traces, scores, and prompts to answer project questions."
+        alt="Active Trace Assistant connects traces, scores, and prompts to answer project questions."
         className="block h-auto w-full dark:hidden"
       />
       <Image
         src={inAppAgentDarkIllustration}
-        alt="Agent-Analytics Assistant connects traces, scores, and prompts to answer project questions."
+        alt="Active Trace Assistant connects traces, scores, and prompts to answer project questions."
         className="hidden h-auto w-full dark:block"
       />
     </div>

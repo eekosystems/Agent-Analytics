@@ -4,7 +4,7 @@ import { getMediaTool, handleGetMedia } from "./tools/getMedia";
 export const mediaFeature: McpFeatureModule = {
   name: "media",
   description:
-    "Retrieve files, images, audio, video, text, and other media assets in the current Langfuse project",
+    "Retrieve files, images, audio, video, text, and other media assets in the current Active Trace project",
   tools: [
     {
       definition: getMediaTool,

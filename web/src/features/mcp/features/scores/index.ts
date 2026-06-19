@@ -26,7 +26,7 @@ import {
 export const scoresFeature: McpFeatureModule = {
   name: "scores",
   description:
-    "Read scores and manage score configurations in the current Langfuse project",
+    "Read scores and manage score configurations in the current Active Trace project",
   tools: [
     {
       definition: listScoresTool,

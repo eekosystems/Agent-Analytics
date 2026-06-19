@@ -52,7 +52,7 @@ export function buildMonitorAlertSlackMessage(
                 type: "button",
                 text: {
                   type: "plain_text",
-                  text: "View in Langfuse",
+                  text: "View in Active Trace",
                   emoji: true,
                 },
                 url: alert.permalink,

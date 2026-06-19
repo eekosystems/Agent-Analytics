@@ -1,4 +1,4 @@
-# Agent-Analytics — Coolify deployment (white-labeled fork)
+# Active Trace — Coolify deployment (white-labeled fork)
 # Pulls the rebranded web + worker images PREBUILT by GitHub Actions
 # (.github/workflows/build-images.yml) from GHCR, so the Coolify server never
 # compiles from source. Building the Next.js monorepo on the server OOM-kills

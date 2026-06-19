@@ -67,7 +67,7 @@ export function AuditLogsTable(props: AuditLogsTableProps) {
       accessorKey: "actor",
       header: "Actor",
       headerTooltip: {
-        description: "The actor within Langfuse who performed the action.",
+        description: "The actor within Active Trace who performed the action.",
       },
       cell: (row) => {
         const actor = row.getValue() as AuditLogRow["actor"];

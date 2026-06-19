@@ -9,7 +9,7 @@ import { queryMetricsTool, handleQueryMetrics } from "./tools/queryMetrics";
 export const metricsFeature: McpFeatureModule = {
   name: "metrics",
   description:
-    "Analyze project usage, quality, cost, and performance metrics from Langfuse data",
+    "Analyze project usage, quality, cost, and performance metrics from Active Trace data",
   tools: [
     {
       definition: queryMetricsTool,

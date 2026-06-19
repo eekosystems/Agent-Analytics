@@ -95,7 +95,7 @@ export const DEFAULT_PYTHON_CODE_EVAL_SOURCE = `${PYTHON_CODE_EVAL_CONTRACT}
 
 
 def evaluate(ctx: EvaluationContext) -> EvaluationResult:
-    """Evaluates one observation and returns one or more Langfuse scores."""
+    """Evaluates one observation and returns one or more Active Trace scores."""
     input = ctx.observation.input
     matches_output = input is not None and ctx.observation.output == input
 

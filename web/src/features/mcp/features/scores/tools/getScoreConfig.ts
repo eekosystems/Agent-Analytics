@@ -6,7 +6,7 @@ import { GetScoreConfigQuery } from "@/src/features/public-api/types/score-confi
 export const [getScoreConfigTool, handleGetScoreConfig] = defineTool({
   name: "getScoreConfig",
   description:
-    "Fetch one score configuration by ID from the current Langfuse project. Returns the public score config object directly.",
+    "Fetch one score configuration by ID from the current Active Trace project. Returns the public score config object directly.",
   baseSchema: GetScoreConfigQuery,
   inputSchema: GetScoreConfigQuery,
   handler: async (input, context) => {

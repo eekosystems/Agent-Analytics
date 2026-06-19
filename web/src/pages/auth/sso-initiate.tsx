@@ -44,7 +44,7 @@ export default function SSOInitiate() {
     return (
       <>
         <Head>
-          <title>Sign-in Error | Agent-Analytics</title>
+          <title>Sign-in Error | Active Trace</title>
         </Head>
         <ErrorPageWithSentry title="SSO Sign-in Failed" message={error} />
       </>
@@ -55,7 +55,7 @@ export default function SSOInitiate() {
   return (
     <>
       <Head>
-        <title>Signing in | Agent-Analytics</title>
+        <title>Signing in | Active Trace</title>
       </Head>
       <Spinner message="Redirecting to your identity provider..." />
     </>

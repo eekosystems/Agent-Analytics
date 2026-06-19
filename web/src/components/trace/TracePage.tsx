@@ -124,17 +124,17 @@ export function TracePage({
         asChild
         size="sm"
         variant="outline"
-        title="Back to Agent-Analytics"
+        title="Back to Active Trace"
         className="px-3"
       >
-        <Link href="/">Langfuse</Link>
+        <Link href="/">Active Trace</Link>
       </Button>
     ) : (
       <Button
         asChild
         size="sm"
         variant="default"
-        title="Sign in to Agent-Analytics"
+        title="Sign in to Active Trace"
         className="px-3"
       >
         <Link href={`/auth/sign-in?targetPath=${encodedTargetPath}`}>

@@ -16,7 +16,7 @@ import {
  * surface cost / token / decision metrics on top of the standard trace data.
  *
  * Custom decision metadata is read from the observation `metadata` map using
- * the convention documented for the Agent-Analytics SDK, e.g.
+ * the convention documented for the Active Trace SDK, e.g.
  *   metadata['capability']      -> logical step ("planning", "retrieval", ...)
  *   metadata['decision_label']  -> the branch chosen ("deep_research", ...)
  *   metadata['confidence']      -> numeric confidence 0..1 (stored as string)

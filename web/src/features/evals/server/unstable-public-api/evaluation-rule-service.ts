@@ -368,7 +368,7 @@ export async function updatePublicEvaluationRule(params: {
       httpCode: 400,
       code: "invalid_body",
       message:
-        "Code evaluator mappings are managed by Langfuse and cannot be provided in the request body.",
+        "Code evaluator mappings are managed by Active Trace and cannot be provided in the request body.",
       details: {
         field: "mapping",
       },

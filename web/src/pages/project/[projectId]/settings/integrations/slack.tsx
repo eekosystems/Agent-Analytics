@@ -201,7 +201,7 @@ export default function SlackIntegrationSettings() {
                   Select a channel above to view its details and test message
                   delivery. For private channels, invite the app first with{" "}
                   <code className="bg-muted rounded px-1 py-0.5">
-                    /invite @Langfuse
+                    /invite @Active Trace
                   </code>{" "}
                   in that channel.
                 </div>

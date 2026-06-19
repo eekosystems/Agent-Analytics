@@ -30,8 +30,8 @@ export function ControlledFeaturePreviewModal({
         showSuccessToast({
           title: "Feature preview updated",
           description: variables.enabled
-            ? "Agent-Analytics Assistant preview has been enabled."
-            : "Agent-Analytics Assistant preview has been disabled.",
+            ? "Active Trace Assistant preview has been enabled."
+            : "Active Trace Assistant preview has been disabled.",
         });
       },
       onError: (error) => {
@@ -86,7 +86,7 @@ function getInAppAgentWarningReason({
   }
 
   if (!hasInAppAgentEntitlement) {
-    return "The Agent-Analytics Assistant preview is not available on your current plan. You can enable the preview, but the Assistant button will not be shown here.";
+    return "The Active Trace Assistant preview is not available on your current plan. You can enable the preview, but the Assistant button will not be shown here.";
   }
 
   if (organizationAiFeaturesEnabled === false) {

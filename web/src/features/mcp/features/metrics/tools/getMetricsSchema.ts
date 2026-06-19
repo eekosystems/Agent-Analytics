@@ -17,7 +17,7 @@ const GetMetricsSchemaInput = z.object({
 export const [getMetricsSchemaTool, handleGetMetricsSchema] = defineTool({
   name: "getMetricsSchema",
   description:
-    "Discover which Langfuse metrics can be analyzed and how to group, filter, aggregate, and time-bucket them before calling queryMetrics.",
+    "Discover which Active Trace metrics can be analyzed and how to group, filter, aggregate, and time-bucket them before calling queryMetrics.",
   baseSchema: GetMetricsSchemaInput,
   inputSchema: GetMetricsSchemaInput,
   handler: async (input, context) => {

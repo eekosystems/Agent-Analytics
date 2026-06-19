@@ -7,7 +7,7 @@ export default function OnboardingPage() {
   return (
     <>
       <Head>
-        <title>Onboarding | Agent-Analytics</title>
+        <title>Onboarding | Active Trace</title>
       </Head>
       <OnboardingSurvey />
     </>

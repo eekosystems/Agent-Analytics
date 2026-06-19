@@ -89,7 +89,7 @@ export async function deleteEvalTemplateFamily({
   }
 
   if (!template.projectId) {
-    throw new ForbiddenError("Langfuse-managed evaluators cannot be deleted");
+    throw new ForbiddenError("Active Trace-managed evaluators cannot be deleted");
   }
 
   // Resolve versions and check references inside one transaction so the

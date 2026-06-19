@@ -17,7 +17,7 @@ export const LangfuseIcon = ({
     src={`${env.NEXT_PUBLIC_BASE_PATH ?? ""}/icon.svg`}
     width={size}
     height={size}
-    alt="Langfuse Icon"
+    alt="Active Trace Icon"
     className={className}
   />
 );
@@ -32,7 +32,7 @@ const LangfuseLogotypeOrCustomized = () => {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={uiCustomization.logoLightModeHref}
-          alt="Langfuse Logo"
+          alt="Active Trace Logo"
           className={cn(
             "group-data-[collapsible=icon]:hidden dark:hidden",
             "max-h-4 max-w-14",
@@ -41,7 +41,7 @@ const LangfuseLogotypeOrCustomized = () => {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={uiCustomization.logoDarkModeHref}
-          alt="Langfuse Logo"
+          alt="Active Trace Logo"
           className={cn(
             "hidden group-data-[collapsible=icon]:hidden dark:block",
             "max-h-4 max-w-14",
@@ -59,13 +59,13 @@ const LangfuseLogotypeOrCustomized = () => {
       <img
         className="-ml-1.5 max-h-6 max-w-22 group-data-[collapsible=icon]:hidden dark:hidden"
         src={`${env.NEXT_PUBLIC_BASE_PATH ?? ""}/wordart-black.svg`}
-        alt="Langfuse Logo"
+        alt="Active Trace Logo"
       />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         className="-ml-1.5 hidden max-h-6 max-w-22 group-data-[collapsible=icon]:hidden dark:block"
         src={`${env.NEXT_PUBLIC_BASE_PATH ?? ""}/wordart-white.svg`}
-        alt="Langfuse Logo"
+        alt="Active Trace Logo"
       />
       <LangfuseIcon
         size={28}
@@ -78,7 +78,7 @@ const LangfuseLogotypeOrCustomized = () => {
 export const LangfuseLogo = ({ version = false }: { version?: boolean }) => {
   return (
     <div className="-mt-2 ml-1 flex flex-wrap gap-4 lg:flex-col lg:items-start">
-      {/* Langfuse Logo */}
+      {/* Active Trace Logo */}
       <div className="flex items-center">
         <Link href="/" className="flex items-center">
           <LangfuseLogotypeOrCustomized />

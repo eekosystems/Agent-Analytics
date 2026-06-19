@@ -91,7 +91,7 @@ const MetricsQueryObjectV2BaseSchema = z.object({
 export const [queryMetricsTool, handleQueryMetrics] = defineTool({
   name: "queryMetrics",
   description:
-    "Answer analytics questions about the current Langfuse project, such as usage over time, model costs, latency, errors, scores, or grouped breakdowns by environment, trace, observation, model, user, session, tag, or score name.",
+    "Answer analytics questions about the current Active Trace project, such as usage over time, model costs, latency, errors, scores, or grouped breakdowns by environment, trace, observation, model, user, session, tag, or score name.",
   baseSchema: MetricsQueryObjectV2BaseSchema,
   inputSchema: MetricsQueryObjectV2,
   handler: async (input, context) => {

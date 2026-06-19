@@ -173,7 +173,7 @@ export const CreateExperimentsForm = ({
                   via User Interface
                 </CardTitle>
                 <CardDescription>
-                  Test single prompts and model configurations via Langfuse UI.
+                  Test single prompts and model configurations via Active Trace UI.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -217,14 +217,14 @@ export const CreateExperimentsForm = ({
                 </CardTitle>
                 <CardDescription>
                   Set up an experiment webhook to start remote experiments from
-                  Langfuse. Your service receives the selected dataset and run
+                  Active Trace. Your service receives the selected dataset and run
                   config, executes the experiment, and posts results back.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="text-muted-foreground list-disc space-y-2 pl-4 text-sm">
                   <li>Run custom evaluation logic in your service</li>
-                  <li>Keep experiment results in Langfuse</li>
+                  <li>Keep experiment results in Active Trace</li>
                 </ul>
                 {!fixedDatasetId ? (
                   <div className="mt-4 space-y-2">

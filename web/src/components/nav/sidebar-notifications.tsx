@@ -26,7 +26,7 @@ type SidebarNotification = {
   ttlMs?: number;
 };
 
-// White-labeled (Agent-Analytics): upstream marketing / changelog / GitHub-star
+// White-labeled (Active Trace): upstream marketing / changelog / GitHub-star
 // notifications are intentionally removed so no third-party branding is shown.
 export const notifications: SidebarNotification[] = [];
 

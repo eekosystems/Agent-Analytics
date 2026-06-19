@@ -36,10 +36,10 @@ const AUTO_SCROLL_THRESHOLD_PX = 50;
 const SCROLL_DIRECTION_TOLERANCE_PX = 1;
 const CONVERSATION_STARTERS = [
   [
-    "Get started with Langfuse",
-    "Where should I start with setting up Langfuse?",
+    "Get started with Active Trace",
+    "Where should I start with setting up Active Trace?",
   ],
-  ["Optimize my setup", "What should I improve in my Langfuse setup?"],
+  ["Optimize my setup", "What should I improve in my Active Trace setup?"],
   [
     "Find problematic traces",
     "Show me patterns in failed or low-scoring traces.",
@@ -360,10 +360,10 @@ export function InAppAgentWindow(props: InAppAgentWindowProps) {
                   <BotMessageSquare className="text-muted-foreground mx-auto h-8 w-8" />
                 </div>
                 <p className="text-muted-foreground mt-4 text-sm">
-                  Welcome to the Langfuse Assistant
+                  Welcome to the Active Trace Assistant
                 </p>
                 <p className="text-muted-foreground/60 mt-2 max-w-xs text-center text-sm leading-relaxed">
-                  I can help you with any questions you have about Langfuse or
+                  I can help you with any questions you have about Active Trace or
                   assist you in exploring your data.
                   <br />
                   What do you want to do?

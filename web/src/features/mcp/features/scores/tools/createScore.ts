@@ -73,7 +73,7 @@ const CreateScoreBaseSchema = z
 export const [createScoreTool, handleCreateScore] = defineTool({
   name: "createScore",
   description: [
-    "Create one score in the current Langfuse project.",
+    "Create one score in the current Active Trace project.",
     "Score reads are eventually consistent: after creation, getScore and listScores may not return the new score immediately. Wait briefly and retry reads when confirming creation.",
   ].join("\n"),
   baseSchema: CreateScoreBaseSchema,

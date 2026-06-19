@@ -24,7 +24,7 @@ import { env } from "@/src/env.mjs";
 export const observationsFeature: McpFeatureModule = {
   name: "observations",
   description:
-    "Inspect generations, spans, events, and other observations in Langfuse",
+    "Inspect generations, spans, events, and other observations in Active Trace",
   tools: [
     {
       definition: listObservationsTool,

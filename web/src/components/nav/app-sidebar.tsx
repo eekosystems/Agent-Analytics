@@ -108,10 +108,10 @@ const DemoBadge = () => {
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Your Agent-Analytics Organizations">
+            <SidebarMenuButton asChild tooltip="Your Active Trace Organizations">
               <Link href="/">
                 <Grid2X2 className="h-4 w-4" />
-                <span>Your Agent-Analytics Orgs</span>
+                <span>Your Active Trace Orgs</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

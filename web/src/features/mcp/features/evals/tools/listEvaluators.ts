@@ -10,7 +10,7 @@ import { runMcpTool } from "../../../core/run-mcp-tool";
 export const [listEvaluatorsTool, handleListEvaluators] = defineTool({
   name: "listEvaluators",
   description:
-    "List evaluators (llm_as_judge and code) defined in the current Langfuse project. Results are paginated.",
+    "List evaluators (llm_as_judge and code) defined in the current Active Trace project. Results are paginated.",
   baseSchema: GetUnstableEvaluatorsQuery,
   inputSchema: GetUnstableEvaluatorsQuery,
   handler: async (input, context) =>

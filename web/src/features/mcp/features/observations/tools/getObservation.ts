@@ -22,7 +22,7 @@ const GetObservationBaseSchema = z.object({
 export const [getObservationTool, handleGetObservation] = defineTool({
   name: "getObservation",
   description: [
-    "Get the details for a single observation in the current Langfuse project by observation ID.",
+    "Get the details for a single observation in the current Active Trace project by observation ID.",
     "Use this when you already know the observation ID and want to inspect its timing, model, status, payload, metadata, usage, cost, or prompt fields.",
     "",
     'By default this returns compact summary fields. Use fields: ["*"] for the full observation, or pass specific field names to limit the response size.',

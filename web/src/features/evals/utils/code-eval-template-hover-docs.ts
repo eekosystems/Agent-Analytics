@@ -15,7 +15,7 @@ type ScoreBase = {
   metadata?: Record<string, unknown>;
 }
 
-A Langfuse score returned by a TypeScript evaluator. The contract is shown at the top of the editor and is locked.`;
+A Active Trace score returned by a TypeScript evaluator. The contract is shown at the top of the editor and is locked.`;
 
 const PYTHON_SCORE_DOC = `@dataclass
 class Score:
@@ -26,15 +26,15 @@ class Score:
     config_id: str | None = None
     metadata: dict[str, Any] | None = None
 
-A Langfuse score returned by a Python evaluator.`;
+A Active Trace score returned by a Python evaluator.`;
 
 export const TYPESCRIPT_CODE_EVAL_HOVER_DOCS = {
   evaluate: `function evaluate(ctx: EvaluationContext): EvaluationResult
 
-The TypeScript function Langfuse executes for each matched target observation.`,
+The TypeScript function Active Trace executes for each matched target observation.`,
   ctx: `parameter ctx: EvaluationContext
 
-The TypeScript value Langfuse passes to evaluate.`,
+The TypeScript value Active Trace passes to evaluate.`,
   EvaluationContext: `type EvaluationContext = {
   observation: {
     input: any;
@@ -49,7 +49,7 @@ The TypeScript value Langfuse passes to evaluate.`,
     | undefined;
 }
 
-The data Langfuse passes to a TypeScript evaluator. The definition is locked at the top of the editor.`,
+The data Active Trace passes to a TypeScript evaluator. The definition is locked at the top of the editor.`,
   observation: `property EvaluationContext.observation: {
   input: any;
   output: any;
@@ -87,10 +87,10 @@ The value returned by evaluate.`,
   Score: TYPESCRIPT_SCORE_DOC,
   scores: `property EvaluationResult.scores: Score[]
 
-One or more Langfuse scores to create for the target observation.`,
+One or more Active Trace scores to create for the target observation.`,
   dataType: `property Score.dataType: "NUMERIC" | "BOOLEAN" | "CATEGORICAL" | "TEXT"
 
-The Langfuse score data type.`,
+The Active Trace score data type.`,
   value: `property Score.value: number | string | boolean
 
 The score value. The allowed value depends on dataType: NUMERIC uses number, BOOLEAN uses boolean, and CATEGORICAL or TEXT use string.`,
@@ -108,10 +108,10 @@ The score config id to attach to the score.`,
 export const PYTHON_CODE_EVAL_HOVER_DOCS = {
   evaluate: `def evaluate(ctx: EvaluationContext) -> EvaluationResult
 
-The Python function Langfuse executes for each matched target observation.`,
+The Python function Active Trace executes for each matched target observation.`,
   ctx: `parameter ctx: EvaluationContext
 
-The Python dataclass value Langfuse passes to evaluate.`,
+The Python dataclass value Active Trace passes to evaluate.`,
   Any: `typing.Any
 
 Use for JSON-like evaluator values whose concrete type depends on the target observation.`,
@@ -136,7 +136,7 @@ class EvaluationContext:
     observation: ObservationContext
     experiment: ExperimentContext | None = None
 
-The data Langfuse passes to a Python evaluator.`,
+The data Active Trace passes to a Python evaluator.`,
   EvaluationResult: `@dataclass
 class EvaluationResult:
     scores: list[Score]
@@ -166,10 +166,10 @@ The expected output from the experiment item.`,
 The metadata from the experiment item.`,
   scores: `property result.scores: list[Score]
 
-One or more Langfuse scores to create for the target observation.`,
+One or more Active Trace scores to create for the target observation.`,
   data_type: `property score.data_type: str | None
 
-The Langfuse score data type. Use NUMERIC, BOOLEAN, CATEGORICAL, or TEXT.`,
+The Active Trace score data type. Use NUMERIC, BOOLEAN, CATEGORICAL, or TEXT.`,
   value: `property score.value: int | float | str | bool
 
 The score value. The allowed value depends on data_type: NUMERIC uses a number, BOOLEAN uses a boolean, and CATEGORICAL or TEXT use a string.`,

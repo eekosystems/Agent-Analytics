@@ -9,7 +9,7 @@ import { runMcpTool } from "../../../core/run-mcp-tool";
 export const [deleteEvaluatorTool, handleDeleteEvaluator] = defineTool({
   name: "deleteEvaluator",
   description:
-    "Delete a project evaluator by id, including all of its versions. Fails while evaluation rules still reference the evaluator; delete those first. Langfuse-managed evaluators cannot be deleted. This cannot be undone.",
+    "Delete a project evaluator by id, including all of its versions. Fails while evaluation rules still reference the evaluator; delete those first. Active Trace-managed evaluators cannot be deleted. This cannot be undone.",
   baseSchema: DeleteUnstableEvaluatorQuery,
   inputSchema: DeleteUnstableEvaluatorQuery,
   handler: async (input, context) =>

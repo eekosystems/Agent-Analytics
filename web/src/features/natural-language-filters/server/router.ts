@@ -86,7 +86,7 @@ export const naturalLanguageFilterRouter = createTRPCRouter({
           throw new TRPCError({
             code: "PRECONDITION_FAILED",
             message:
-              "Langfuse AI filters environment variables not configured. Please set LANGFUSE_AI_FEATURES_PUBLIC_KEY and LANGFUSE_AI_FEATURES_SECRET_KEY variables.",
+              "Active Trace AI filters environment variables not configured. Please set LANGFUSE_AI_FEATURES_PUBLIC_KEY and LANGFUSE_AI_FEATURES_SECRET_KEY variables.",
           });
         }
 
@@ -111,7 +111,7 @@ export const naturalLanguageFilterRouter = createTRPCRouter({
         if (aiTelemetryEnabled && !targetProjectId) {
           throw new TRPCError({
             code: "INTERNAL_SERVER_ERROR",
-            message: "Langfuse AI Features not configured.",
+            message: "Active Trace AI Features not configured.",
           });
         }
 

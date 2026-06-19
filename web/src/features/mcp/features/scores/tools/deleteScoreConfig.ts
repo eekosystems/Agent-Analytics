@@ -6,7 +6,7 @@ import { PutScoreConfigQuery } from "@/src/features/public-api/types/score-confi
 export const [deleteScoreConfigTool, handleDeleteScoreConfig] = defineTool({
   name: "deleteScoreConfig",
   description:
-    "Delete a score configuration from the current Langfuse project by archiving it.",
+    "Delete a score configuration from the current Active Trace project by archiving it.",
   baseSchema: PutScoreConfigQuery,
   inputSchema: PutScoreConfigQuery,
   handler: async (input, context) => {

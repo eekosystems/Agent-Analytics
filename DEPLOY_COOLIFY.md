@@ -1,4 +1,4 @@
-# Deploying Agent-Analytics to Coolify
+# Deploying Active Trace to Coolify
 
 This is a white-labeled fork of Langfuse (MIT core). The web + worker images are
 **prebuilt by GitHub Actions** (`.github/workflows/build-images.yml`) on GitHub's
@@ -15,7 +15,7 @@ This is a white-labeled fork of Langfuse (MIT core). The web + worker images are
 - This repo connected to Coolify (GitHub source).
 - A domain/subdomain pointed at your Coolify server (e.g. `analytics.yourdomain.com`).
 - The image build workflow has run at least once on `main` (GitHub → **Actions**
-  → *Build Agent-Analytics images* is green, and the two packages appear under
+  → *Build Active Trace images* is green, and the two packages appear under
   your GitHub **Packages**).
 
 ## Image registry auth (one-time)
@@ -58,8 +58,8 @@ Pick one:
 
 4. **Deploy.** Coolify pulls the prebuilt images (no compile) and starts the
    stack; the web/worker containers run DB migrations on boot. When healthy, open
-   your domain — you should see the **Agent-Analytics** sign-in page.
-   - To ship code changes: push to `main`, wait for the *Build Agent-Analytics
+   your domain — you should see the **Active Trace** sign-in page.
+   - To ship code changes: push to `main`, wait for the *Build Active Trace
      images* workflow to go green, then **Redeploy** in Coolify (enable
      *Force pull* / "pull latest images" so it fetches the new `:latest`).
 

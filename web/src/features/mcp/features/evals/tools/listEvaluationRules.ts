@@ -9,7 +9,7 @@ import { runMcpTool } from "../../../core/run-mcp-tool";
 export const [listEvaluationRulesTool, handleListEvaluationRules] = defineTool({
   name: "listEvaluationRules",
   description:
-    "List evaluation rules in the current Langfuse project. Each rule attaches an evaluator to incoming observations or experiment items. Results are paginated.",
+    "List evaluation rules in the current Active Trace project. Each rule attaches an evaluator to incoming observations or experiment items. Results are paginated.",
   baseSchema: GetUnstableEvaluationRulesQuery,
   inputSchema: GetUnstableEvaluationRulesQuery,
   handler: async (input, context) =>

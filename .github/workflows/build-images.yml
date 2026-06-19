@@ -1,4 +1,4 @@
-name: Build Agent-Analytics images
+name: Build Active Trace images
 
 # Builds the rebranded web + worker images on GitHub's runners (16 GB RAM) and
 # pushes them to GHCR, so the Coolify server never has to compile from source.

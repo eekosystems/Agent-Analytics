@@ -70,7 +70,7 @@ export const ErrorNotification: React.FC<ErrorNotificationProps> = ({
               setOpen(true);
             }}
           >
-            Report issue to Agent-Analytics team
+            Report issue to Active Trace team
           </Button>
         )}
       </div>

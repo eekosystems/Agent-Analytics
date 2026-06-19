@@ -70,7 +70,7 @@ const PostUnstableExperimentEvaluationRuleBody = z.object({
   mapping: z.array(ExperimentEvaluationRuleMapping).optional(),
 });
 
-// `code` evaluators use a fixed runtime mapping managed by Langfuse and must
+// `code` evaluators use a fixed runtime mapping managed by Active Trace and must
 // omit `mapping`; `llm_as_judge` evaluators require it.
 export const PostUnstableEvaluationRuleBody = z
   .discriminatedUnion("target", [
@@ -84,7 +84,7 @@ export const PostUnstableEvaluationRuleBody = z
     {
       path: ["mapping"],
       message:
-        "Code evaluator mappings are managed by Langfuse and cannot be provided in the request body.",
+        "Code evaluator mappings are managed by Active Trace and cannot be provided in the request body.",
     },
   )
   .refine(

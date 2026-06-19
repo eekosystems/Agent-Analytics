@@ -29,8 +29,8 @@ const ResetPasswordTemplate = ({
   isSetupMode,
 }: ResetPasswordTemplateProps) => {
   const previewText = isSetupMode
-    ? "Verify your Langfuse email"
-    : "Your Langfuse reset code";
+    ? "Verify your Active Trace email"
+    : "Your Active Trace reset code";
   return (
     <Html>
       <Head />
@@ -43,20 +43,20 @@ const ResetPasswordTemplate = ({
                 src="https://static.langfuse.com/langfuse_logo_transactional_email.png"
                 width="40"
                 height="40"
-                alt="Langfuse"
+                alt="Active Trace"
                 className="mx-auto my-0"
               />
             </Section>
             <Heading className="mx-0 my-[30px] p-0 text-center text-xl font-normal text-black">
               {isSetupMode ? (
                 <>
-                  Welcome to Langfuse!
+                  Welcome to Active Trace!
                   <br />
                   Verify your email to get started.
                 </>
               ) : (
                 <>
-                  Forgot your Langfuse password?
+                  Forgot your Active Trace password?
                   <br />
                   It happens to the best of us.
                 </>
@@ -94,12 +94,12 @@ export async function sendResetPasswordVerificationRequest(
   );
 
   const subject = isSetupMode
-    ? "Verify your Langfuse email"
-    : "Your Langfuse password reset code";
+    ? "Verify your Active Trace email"
+    : "Your Active Trace password reset code";
 
   const textBody = isSetupMode
-    ? `Welcome to Langfuse! Use the following code to verify your email: ${token}\n\nThis code will expire in 3 minutes. If you did not request this, you can ignore this email.`
-    : `Use the following code to reset your Langfuse password: ${token}\n\nThis code will expire in 3 minutes. If you did not request a reset, you can ignore this email.`;
+    ? `Welcome to Active Trace! Use the following code to verify your email: ${token}\n\nThis code will expire in 3 minutes. If you did not request this, you can ignore this email.`
+    : `Use the following code to reset your Active Trace password: ${token}\n\nThis code will expire in 3 minutes. If you did not request a reset, you can ignore this email.`;
 
   const result = await transport.sendMail({
     to: identifier,

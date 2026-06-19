@@ -120,7 +120,7 @@ export function EvaluatorSelector({
     shouldShowEvalTemplate(template, codeEvalCapabilities),
   );
 
-  // Group templates by name and whether they are managed by Langfuse
+  // Group templates by name and whether they are managed by Active Trace
   const groupedTemplates = visibleEvalTemplates.reduce(
     (acc, template) => {
       const group = template.projectId ? "custom" : "langfuse";
@@ -287,7 +287,7 @@ export function EvaluatorSelector({
 
         {filteredTemplates.langfuse.length > 0 && (
           <>
-            <InputCommandGroup heading="Langfuse managed evaluators">
+            <InputCommandGroup heading="Active Trace managed evaluators">
               {filteredTemplates.langfuse.map(([name, templateData]) => {
                 const latestVersion = templateData[templateData.length - 1];
                 const isInvalid = isTemplateInvalid(latestVersion);

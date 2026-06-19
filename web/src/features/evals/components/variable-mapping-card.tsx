@@ -351,7 +351,7 @@ export const VariableMappingCard = ({
                                 <VariableMappingDescription
                                   title="Object"
                                   description={
-                                    "Langfuse object to retrieve the data from."
+                                    "Active Trace object to retrieve the data from."
                                   }
                                   href={
                                     "https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge"
@@ -416,7 +416,7 @@ export const VariableMappingCard = ({
                                     <VariableMappingDescription
                                       title={"Object Name"}
                                       description={
-                                        "Name of the Langfuse object to retrieve the data from."
+                                        "Name of the Active Trace object to retrieve the data from."
                                       }
                                       href={
                                         "https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge"
@@ -516,7 +516,7 @@ export const VariableMappingCard = ({
                                 <VariableMappingDescription
                                   title={"Object Field"}
                                   description={
-                                    "Field on the Langfuse object to insert into the template."
+                                    "Field on the Active Trace object to insert into the template."
                                   }
                                   href={
                                     "https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge"

@@ -57,7 +57,7 @@ const modelConfigDescriptions = {
   config:
     "Some tokenizers require additional configuration (e.g. openai tiktoken). See docs for details.",
   maintainer:
-    "Maintainer of the model. Langfuse managed models can be cloned, user managed models can be edited and deleted. To supersede a Langfuse managed model, set the custom model name to the Langfuse model name.",
+    "Maintainer of the model. Active Trace managed models can be cloned, user managed models can be edited and deleted. To supersede an Active Trace managed model, set the custom model name to the Active Trace model name.",
   lastUsed: "Start time of the latest generation using this model",
 } as const;
 
@@ -145,7 +145,7 @@ export default function ModelTable({ projectId }: { projectId: string }) {
                 )}
               </TooltipTrigger>
               <TooltipContent>
-                {isLangfuse ? "Langfuse maintained" : "User maintained"}
+                {isLangfuse ? "Active Trace maintained" : "User maintained"}
               </TooltipContent>
             </Tooltip>
           </div>

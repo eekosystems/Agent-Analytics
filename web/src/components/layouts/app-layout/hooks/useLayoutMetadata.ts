@@ -29,8 +29,8 @@ export function useLayoutMetadata(
 
     // Determine page title from active route
     const title = activePathName
-      ? `${activePathName} | Agent-Analytics`
-      : "Agent-Analytics";
+      ? `${activePathName} | Active Trace`
+      : "Active Trace";
 
     // Use dev favicon in DEV region for visual distinction
     // Using SVG for modern browsers with PNG fallback specified in sizes

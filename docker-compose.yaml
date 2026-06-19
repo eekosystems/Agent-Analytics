@@ -1,8 +1,8 @@
-# Agent-Analytics — Coolify deployment with prebuilt GHCR images.
+# Active Trace — Coolify deployment with prebuilt GHCR images.
 # Coolify looks for /docker-compose.yaml by default, so this is named to match.
 # Secrets are baked in because this repo is PRIVATE. Rotate before real customer use.
 #
-# The web/worker images (including Agent-Analytics branding) are built by GitHub
+# The web/worker images (including Active Trace branding) are built by GitHub
 # Actions and pulled from GHCR — NEVER built on the server. Building the Next.js
 # monorepo on the box OOM-kills it. See DEPLOY_COOLIFY.md for image auth.
 services:

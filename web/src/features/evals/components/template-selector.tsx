@@ -94,7 +94,7 @@ export const TemplateSelector = ({
     selectedTemplateIds: activeTemplates,
   });
 
-  // Group templates by name and whether they are managed by Langfuse
+  // Group templates by name and whether they are managed by Active Trace
   const groupedTemplates = visibleEvalTemplates.reduce(
     (acc, template) => {
       const group = template.projectId ? "custom" : "langfuse";
@@ -291,7 +291,7 @@ export const TemplateSelector = ({
 
                 {filteredTemplates.langfuse.length > 0 && (
                   <InputCommandGroup
-                    heading="Langfuse managed evaluators"
+                    heading="Active Trace managed evaluators"
                     className="max-h-full min-h-0"
                   >
                     {filteredTemplates.langfuse.map(([name, templateData]) => {

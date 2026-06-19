@@ -139,7 +139,7 @@ export default function EnterpriseSsoRequiredPage() {
   return (
     <>
       <Head>
-        <title>Enterprise SSO Required | Agent-Analytics</title>
+        <title>Enterprise SSO Required | Active Trace</title>
       </Head>
       <div className="min-h-screen-with-banner bg-background flex flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
