@@ -1534,6 +1534,7 @@ enum DashboardWidgetViews {
   OBSERVATIONS
   SCORES_NUMERIC
   SCORES_CATEGORICAL
+  BUSINESS_EVENTS
 }
 
 enum DashboardWidgetChartType {

@@ -4,6 +4,7 @@ import { ForbiddenError } from "@langfuse/shared";
 import { prisma } from "@langfuse/shared/src/db";
 import { z } from "zod";
 import { randomUUID } from "crypto";
+import { mirrorBusinessEventToClickhouse } from "@/src/features/business-events/server/businessEventsClickhouse";
 
 /**
  * Public API for business event attribution.
@@ -96,6 +97,21 @@ export default withMiddlewares({
           timestamp: body.timestamp ?? undefined,
           metadata: body.metadata ?? undefined,
         },
+      });
+
+      // Mirror into ClickHouse so outcomes are queryable as a dashboard widget
+      // view. Best-effort: Postgres is the source of truth.
+      await mirrorBusinessEventToClickhouse({
+        id: event.id,
+        projectId,
+        configId: config.id,
+        name: config.name,
+        traceId: event.traceId,
+        observationId: event.observationId,
+        clientId: event.clientId,
+        value: event.value,
+        timestamp: event.timestamp,
+        metadata: body.metadata ?? null,
       });
 
       return { id: event.id };

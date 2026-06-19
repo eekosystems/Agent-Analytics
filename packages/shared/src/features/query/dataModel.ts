@@ -457,6 +457,30 @@ export const observationsView: ViewDeclarationType = {
       description: "Names of tools that were called by the observation.",
       explodeArray: true,
     },
+    // Active Trace decision-intelligence dimensions, read from observation
+    // metadata. Grouping the cost/count/latency measures by these turns the
+    // standalone Decision Intelligence views into native dashboard widgets.
+    capability: {
+      sql: "observations.metadata['capability']",
+      alias: "capability",
+      type: "string",
+      description:
+        "Agent capability / logical step, from the observation metadata 'capability' key (e.g. planning, retrieval).",
+    },
+    decisionLabel: {
+      sql: "observations.metadata['decision_label']",
+      alias: "decisionLabel",
+      type: "string",
+      description:
+        "Decision branch the agent chose, from the observation metadata 'decision_label' key.",
+    },
+    clientId: {
+      sql: "observations.metadata['client_id']",
+      alias: "clientId",
+      type: "string",
+      description:
+        "End-customer the run belongs to, from the observation metadata 'client_id' key.",
+    },
   },
   measures: {
     count: {
@@ -1386,6 +1410,105 @@ export const eventsObservationsView: ViewDeclarationType = {
   baseCte: "events_core events_observations", // No FINAL modifier needed for events_core table
 };
 
+// Active Trace business outcomes. Backed by the ClickHouse `business_events`
+// table (dual-written from Postgres on ingest). Makes outcomes/revenue a native
+// widget + dashboard data source so they can be charted and filtered like any
+// other view. Same declaration for v1 and v2 — the table is independent of the
+// v1/v2 observations split.
+export const businessEventsView: ViewDeclarationType = {
+  name: "business_events",
+  description:
+    "Business outcomes recorded against traces (e.g. qualified_lead, booked_call), with optional revenue value, for cost-per-outcome and ROI analytics.",
+  dimensions: {
+    eventName: {
+      sql: "business_events.name",
+      alias: "eventName",
+      type: "string",
+      description:
+        "The outcome type / custom event name (e.g. qualified_lead, booked_call).",
+    },
+    clientId: {
+      sql: "business_events.client_id",
+      alias: "clientId",
+      type: "string",
+      description: "End-customer the outcome belongs to.",
+    },
+    traceId: {
+      sql: "business_events.trace_id",
+      alias: "traceId",
+      type: "string",
+      description: "Trace this outcome is attributed to.",
+      highCardinality: true,
+    },
+  },
+  measures: {
+    count: {
+      sql: "count(*)",
+      alias: "count",
+      type: "integer",
+      description: "Number of outcomes recorded.",
+      unit: "outcomes",
+    },
+    revenue: {
+      sql: "sum(business_events.value)",
+      alias: "revenue",
+      type: "decimal",
+      description:
+        "Total recorded value of the outcomes (revenue / deal size).",
+      unit: "USD",
+    },
+    avgValue: {
+      sql: "avg(business_events.value)",
+      alias: "avgValue",
+      type: "decimal",
+      description: "Average recorded value per outcome.",
+      unit: "USD",
+    },
+    // Cross-table cost attribution: joins each outcome to its trace's
+    // observations (same pattern as traceView.totalCost) so cost-per-outcome,
+    // profit and ROI are a single widget, not two side-by-side charts.
+    attributedCost: {
+      sql: "sum(observations.total_cost)",
+      alias: "attributedCost",
+      type: "decimal",
+      relationTable: "observations",
+      description:
+        "LLM cost of the trace(s) attributed to these outcomes.",
+      unit: "USD",
+    },
+    costPerOutcome: {
+      // uniq(id) dedupes outcomes across the observation fan-out, so the ratio
+      // stays correct under the join.
+      sql: "sum(observations.total_cost) / nullIf(uniq(business_events.id), 0)",
+      alias: "costPerOutcome",
+      type: "decimal",
+      relationTable: "observations",
+      description: "Average attributed LLM cost per outcome (cost ÷ outcomes).",
+      unit: "USD",
+    },
+    profit: {
+      sql: "sum(business_events.value) - sum(observations.total_cost)",
+      alias: "profit",
+      type: "decimal",
+      relationTable: "observations",
+      description:
+        "Recorded value minus attributed LLM cost (revenue − cost).",
+      unit: "USD",
+    },
+  },
+  tableRelations: {
+    observations: {
+      name: "observations",
+      joinConditionSql:
+        "ON business_events.trace_id = observations.trace_id AND business_events.project_id = observations.project_id",
+      timeDimension: "start_time",
+    },
+  },
+  segments: [],
+  timeDimension: "timestamp",
+  baseCte: `business_events FINAL`,
+};
+
 // Define versioned structure type
 // Both v1 and v2 have all views (traces, observations, scores-numeric, scores-categorical)
 // v1 uses normalized tables (traces, observations), v2 uses events table
@@ -1402,12 +1525,14 @@ export const viewDeclarations: VersionedViewDeclarations = {
     observations: observationsView, // Old: observations table
     "scores-numeric": scoresNumericView,
     "scores-categorical": scoresCategoricalView,
+    "business-events": businessEventsView,
   },
   v2: {
     traces: eventsTracesView,
     observations: eventsObservationsView,
     "scores-numeric": scoresNumericViewV2,
     "scores-categorical": scoresCategoricalViewV2,
+    "business-events": businessEventsView,
   },
 } as const;
 

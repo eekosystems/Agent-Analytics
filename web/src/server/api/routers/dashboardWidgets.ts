@@ -70,6 +70,7 @@ const viewMapping: Record<string, DashboardWidgetViews> = {
   observations: DashboardWidgetViews.OBSERVATIONS,
   "scores-numeric": DashboardWidgetViews.SCORES_NUMERIC,
   "scores-categorical": DashboardWidgetViews.SCORES_CATEGORICAL,
+  "business-events": DashboardWidgetViews.BUSINESS_EVENTS,
 };
 
 // Reverse mapping for client-side use
@@ -81,6 +82,7 @@ const reverseViewMapping: Record<
   [DashboardWidgetViews.OBSERVATIONS]: "observations",
   [DashboardWidgetViews.SCORES_NUMERIC]: "scores-numeric",
   [DashboardWidgetViews.SCORES_CATEGORICAL]: "scores-categorical",
+  [DashboardWidgetViews.BUSINESS_EVENTS]: "business-events",
 };
 
 function validateMetricAggregations(params: {

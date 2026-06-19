@@ -10,6 +10,7 @@ import {
 } from "@langfuse/shared/src/server";
 import { auditLog } from "@/src/features/audit-logs/auditLog";
 import { LangfuseNotFoundError } from "@langfuse/shared";
+import { mirrorBusinessEventToClickhouse } from "@/src/features/business-events/server/businessEventsClickhouse";
 
 /**
  * Business event attribution.
@@ -178,7 +179,7 @@ export const businessEventsRouter = createTRPCRouter({
         );
       }
 
-      return ctx.prisma.businessEvent.create({
+      const event = await ctx.prisma.businessEvent.create({
         data: {
           projectId: input.projectId,
           configId: config.id,
@@ -189,6 +190,21 @@ export const businessEventsRouter = createTRPCRouter({
           timestamp: input.timestamp ?? undefined,
         },
       });
+
+      await mirrorBusinessEventToClickhouse({
+        id: event.id,
+        projectId: input.projectId,
+        configId: config.id,
+        name: config.name,
+        traceId: event.traceId,
+        observationId: event.observationId,
+        clientId: event.clientId,
+        value: event.value,
+        timestamp: event.timestamp,
+        metadata: null,
+      });
+
+      return event;
     }),
 
   /**

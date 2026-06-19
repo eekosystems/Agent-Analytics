@@ -87,11 +87,16 @@ export const views = z.enum([
   "observations",
   "scores-numeric",
   "scores-categorical",
+  "business-events",
   // "sessions",
   // "users",
 ]);
 
-// V2 views - excludes "traces" which is not supported in v2 API
+// V2 views - excludes "traces" which is not supported in v2 API.
+// NOTE: "business-events" is intentionally NOT here. This enum is reused as the
+// monitors MonitorView (see features/monitors/types.ts), whose Prisma enum has
+// no business-events member. business-events lives in the full `views` enum and
+// the v1 query path, which is what the dashboard widgets use.
 export const viewsV2 = z.enum([
   "observations",
   "scores-numeric",

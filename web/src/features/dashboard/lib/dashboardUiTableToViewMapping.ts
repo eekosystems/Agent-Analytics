@@ -111,6 +111,15 @@ const viewFilterDefinitions: Record<
       sourceSpec("Session", { uiTableId: "sessionId" }),
     ),
     defineField("metadata", sourceSpec("Metadata", { uiTableId: "metadata" })),
+    defineField(
+      "capability",
+      sourceSpec("Capability", { uiTableId: "capability" }),
+    ),
+    defineField(
+      "decisionLabel",
+      sourceSpec("Decision", { uiTableId: "decisionLabel" }),
+    ),
+    defineField("clientId", sourceSpec("Client", { uiTableId: "clientId" })),
     defineField("type", sourceSpec("Type", { uiTableId: "type" })),
     defineField("tags", sourceSpec("Tags", { uiTableId: "traceTags" })),
     defineField(
@@ -259,6 +268,11 @@ const viewFilterDefinitions: Record<
       "traceVersion",
       sourceSpec("Version", { uiTableId: "version" }),
     ),
+  ],
+  "business-events": [
+    defineField("eventName", sourceSpec("Outcome", { uiTableId: "eventName" })),
+    defineField("clientId", sourceSpec("Client", { uiTableId: "clientId" })),
+    defineField("traceId", sourceSpec("Trace", { uiTableId: "traceId" })),
   ],
 };
 
