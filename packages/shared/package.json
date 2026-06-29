@@ -112,7 +112,7 @@
     "@opentelemetry/api": ">=1.0.0 <1.10.0",
     "@prisma/client": "^6.19.3",
     "@react-email/components": "^0.5.1",
-    "@react-email/render": "^1.2.1",
+    "@react-email/render": "^2.0.9",
     "@slack/oauth": "3.0.5",
     "@slack/web-api": "^7.15.0",
     "@smithy/node-http-handler": "4.5.1",
