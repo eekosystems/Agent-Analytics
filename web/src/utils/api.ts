@@ -103,7 +103,7 @@ if (vitest && typeof vitest === "object") {
 
     it("detects the reported failed fetch error with a hostname suffix", () => {
       const error = TRPCClientError.from(
-        new TypeError("Failed to fetch (cloud.langfuse.com)"),
+        new TypeError("Failed to fetch (cloud.example.com)"),
       );
 
       expect(isNetworkConnectivityError(error)).toBe(true);

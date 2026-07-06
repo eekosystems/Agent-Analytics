@@ -528,6 +528,8 @@ async function executeWebhookAction({
   try {
     const decryptedSecret = decrypt(webhookConfig.secretKey);
     const signature = createSignatureHeader(webhookPayload, decryptedSecret);
+    requestHeaders["x-activetrace-signature"] = signature;
+    // Keep the legacy header so existing consumers can continue verifying signatures
     requestHeaders["x-langfuse-signature"] = signature;
   } catch (error) {
     logger.error(
@@ -673,6 +675,8 @@ async function executeGitHubDispatchAction({
 
     // Add signature for optional verification (using GitHub token as secret)
     const signature = createSignatureHeader(githubPayload, decryptedToken);
+    requestHeaders["x-activetrace-signature"] = signature;
+    // Keep the legacy header so existing consumers can continue verifying signatures
     requestHeaders["x-langfuse-signature"] = signature;
   } catch (error) {
     logger.error("Failed to decrypt GitHub token or generate signature", error);

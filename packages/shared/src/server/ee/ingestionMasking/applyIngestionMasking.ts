@@ -76,6 +76,8 @@ async function makeCallbackRequest<T>(params: {
   try {
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
+      "X-ActiveTrace-Org-Id": orgId ?? "",
+      "X-ActiveTrace-Project-Id": projectId,
       "X-Langfuse-Org-Id": orgId ?? "",
       "X-Langfuse-Project-Id": projectId,
       ...propagatedHeaders,

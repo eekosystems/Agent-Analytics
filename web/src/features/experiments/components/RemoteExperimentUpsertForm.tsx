@@ -193,7 +193,7 @@ export const RemoteExperimentUpsertForm = ({
           </strong>
           . Configure a webhook URL to trigger remote custom experiments from
           UI. We will send dataset info (name, id) and config to your service,
-          which can run against the dataset and post results to Langfuse.
+          which can run against the dataset and post results to Active Trace.
         </DialogDescription>
       </DialogHeader>
 

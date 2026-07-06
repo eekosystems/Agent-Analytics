@@ -77,8 +77,9 @@ export function EstimatedCostRow(props: EstimatedCostRowProps) {
             </TooltipTrigger>
             <TooltipContent className="max-w-xs space-y-2 p-3">
               <p className="text-xs">
-                Expected cost on your linked API key (not Langfuse). Estimated
-                from average evaluator execution cost over the last 7 days.
+                Expected cost on your linked API key (not Active Trace).
+                Estimated from average evaluator execution cost over the last 7
+                days.
               </p>
               <div className="space-y-1">
                 {evaluators.map(({ id, name }) => {

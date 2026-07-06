@@ -17,7 +17,6 @@ import {
   DialogFooter,
 } from "@/src/components/ui/dialog";
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type UseFormReturn } from "react-hook-form";
 import { api } from "@/src/utils/api";
@@ -440,15 +439,7 @@ export const MultiStepExperimentForm = ({
         <DialogTitle>Run Experiment</DialogTitle>
         <DialogDescription>
           Run an experiment to evaluate prompts and model configurations against
-          a dataset. See{" "}
-          <Link
-            href="https://langfuse.com/docs/evaluation/dataset-runs/native-run"
-            target="_blank"
-            className="underline"
-          >
-            documentation
-          </Link>{" "}
-          to learn more.
+          a dataset.
         </DialogDescription>
       </DialogHeader>
       <Form {...form}>

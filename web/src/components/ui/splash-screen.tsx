@@ -5,6 +5,7 @@ import { InfoIcon } from "lucide-react";
 import { ActionButton } from "@/src/components/ActionButton";
 import { Alert, AlertTitle, AlertDescription } from "@/src/components/ui/alert";
 import { StatusBadge } from "@/src/components/layouts/status-badge";
+import { sanitizeExternalHref } from "@/src/utils/hidden-links";
 
 export interface ValueProposition {
   title: string;
@@ -79,7 +80,7 @@ export function SplashScreen({
   description,
   waitingFor,
   image,
-  videoSrc,
+  videoSrc: videoSrcProp,
   steps,
   valuePropositions = [],
   primaryAction,
@@ -88,6 +89,7 @@ export function SplashScreen({
   children,
   videoPosition = "top",
 }: SplashScreenProps) {
+  const videoSrc = sanitizeExternalHref(videoSrcProp);
   const mediaBlock = (
     <>
       {videoSrc && <VideoPlayer videoSrc={videoSrc} />}

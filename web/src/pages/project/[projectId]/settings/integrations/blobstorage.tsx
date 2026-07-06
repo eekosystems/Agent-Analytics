@@ -39,7 +39,6 @@ import { useHasProjectAccess } from "@/src/features/rbac/utils/checkProjectAcces
 import { api } from "@/src/utils/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Card } from "@/src/components/ui/card";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -60,7 +59,7 @@ import {
 } from "@langfuse/shared";
 import { useLangfuseCloudRegion } from "@/src/features/organizations/hooks";
 import { useQueryProject } from "@/src/features/projects/hooks";
-import { Info, ExternalLink } from "lucide-react";
+import { Info } from "lucide-react";
 
 export default function BlobStorageIntegrationSettings() {
   const router = useRouter();
@@ -113,16 +112,6 @@ export default function BlobStorageIntegrationSettings() {
           <>
             {syncStatus && <StatusBadge type={syncStatusToBadge[syncStatus]} />}
           </>
-        ),
-        actionButtonsRight: (
-          <Button asChild variant="secondary">
-            <Link
-              href="https://langfuse.com/docs/api-and-data-platform/features/export-to-blob-storage"
-              target="_blank"
-            >
-              Integration Docs ↗
-            </Link>
-          </Button>
         ),
       }}
     >
@@ -758,17 +747,6 @@ const BlobStorageIntegrationSettingsForm = ({
                           </div>
                         </div>
                       ))}
-                      <div className="border-t pt-2">
-                        <a
-                          href="https://langfuse.com/docs/integrations/export-sources"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary inline-flex items-center gap-1 text-xs hover:underline"
-                        >
-                          For further information see
-                          <ExternalLink className="h-3 w-3" />
-                        </a>
-                      </div>
                     </TooltipContent>
                   </Tooltip>
                 </FormLabel>

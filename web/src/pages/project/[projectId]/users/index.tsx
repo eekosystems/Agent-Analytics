@@ -89,17 +89,7 @@ export default function UsersPage() {
           description: (
             <>
               Attribute data in Active Trace to a user by adding a userId to your
-              traces. See{" "}
-              <a
-                href="https://langfuse.com/docs/observability/features/users"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="decoration-primary/30 hover:decoration-primary underline"
-                onClick={(e) => e.stopPropagation()}
-              >
-                docs
-              </a>{" "}
-              to learn more.
+              traces.
             </>
           ),
           href: "https://langfuse.com/docs/observability/features/users",

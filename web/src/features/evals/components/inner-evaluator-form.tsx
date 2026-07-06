@@ -138,16 +138,8 @@ const addPropagationWarnings = (
           content: (
             <>
               This filter requires JS SDK &ge; 4.0.0 or Python SDK &ge; 3.0.0
-              with attribute propagation enabled. Please{" "}
-              <a
-                href="https://langfuse.com/integrations/native/opentelemetry#propagating-attributes"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-dark-blue hover:opacity-80"
-              >
-                follow our docs
-              </a>{" "}
-              to configure your instrumentation to use this filter.
+              with attribute propagation enabled. Please configure your
+              instrumentation to use this filter.
             </>
           ),
         },
@@ -263,16 +255,7 @@ const ObservationsPreview = memo(
                     OTEL-compatible SDKs in the last 7 days. Observation-level
                     evaluators require JS SDK v4+ or Python SDK v3+. You can
                     still configure this evaluator now—it will start running
-                    once you upgrade.{" "}
-                    <a
-                      href="https://langfuse.com/docs/observability/sdk/upgrade-path"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-dark-blue font-medium hover:opacity-80"
-                    >
-                      Learn more
-                    </a>
-                    .
+                    once you upgrade.
                   </span>
                 </div>
               </div>
@@ -1145,15 +1128,7 @@ export const InnerEvaluatorForm = (props: {
                         {!field.value && isEventTarget(target) && (
                           <p className="text-muted-foreground text-xs">
                             This evaluator can still be used for batched
-                            evaluation of historic observations.{" "}
-                            <a
-                              href="https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-dark-blue hover:opacity-80"
-                            >
-                              Read the docs
-                            </a>
+                            evaluation of historic observations.
                           </p>
                         )}
                       </div>

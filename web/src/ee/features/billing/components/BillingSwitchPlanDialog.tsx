@@ -1,6 +1,5 @@
 // Langfuse Cloud only
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { nanoid } from "nanoid";
 
@@ -75,12 +74,6 @@ export const BillingSwitchPlanDialog = ({
         <DialogHeader>
           <div className="flex flex-row items-center justify-between">
             <DialogTitle>Plans</DialogTitle>
-            <ActionButton
-              variant="secondary"
-              href="https://langfuse.com/pricing"
-            >
-              Comparison of plans ↗
-            </ActionButton>
           </div>
         </DialogHeader>
         <DialogBody>
@@ -130,15 +123,7 @@ export const BillingSwitchPlanDialog = ({
                           {product.checkout?.price}
                         </div>
                         <div className="text-muted-foreground text-sm">
-                          + {product.checkout?.usagePrice},{" "}
-                          <a
-                            href="https://langfuse.com/pricing#pricing-calculator"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="underline"
-                          >
-                            usage calculator ↗
-                          </a>
+                          + {product.checkout?.usagePrice}
                         </div>
                       </div>
                     </div>
@@ -155,13 +140,7 @@ export const BillingSwitchPlanDialog = ({
                         )}
                       </ul>
                     </div>
-                    <Link
-                      href="https://langfuse.com/pricing"
-                      target="_blank"
-                      className="text-muted-foreground hover:text-foreground mt-auto block py-4 text-sm"
-                    >
-                      Learn more about plan →
-                    </Link>
+                    <div className="mt-auto pt-4" />
                     {/* The default behavior the user is on a paid plan.*/}
                     {organization?.cloudConfig?.stripe?.activeProductId ? (
                       // Change plan view

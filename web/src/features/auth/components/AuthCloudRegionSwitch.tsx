@@ -84,15 +84,7 @@ export function CloudRegionSwitch({
           <div className="bg-muted/50 text-muted-foreground mt-2 rounded-md p-3 text-xs">
             <p>
               The Business Associate Agreement (BAA) is only effective on the
-              Cloud Pro and Teams plans.{" "}
-              <a
-                href="https://langfuse.com/security/hipaa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-accent hover:text-hover-primary-accent underline"
-              >
-                Learn more about HIPAA compliance →
-              </a>
+              Cloud Pro and Teams plans.
             </p>
           </div>
         )}
@@ -137,27 +129,6 @@ const DataRegionInfo = () => (
           <p>
             You can have accounts in multiple regions. Each region requires a
             separate subscription.
-          </p>
-          <p>
-            Learn more about{" "}
-            <a
-              href="https://langfuse.com/security/data-regions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary-accent underline"
-            >
-              data regions
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://langfuse.com/docs/data-security-privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary-accent underline"
-            >
-              data security & privacy
-            </a>
-            .
           </p>
         </DialogDescription>
       </DialogBody>

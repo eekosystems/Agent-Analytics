@@ -70,40 +70,40 @@ const getPythonCode = (
   name: string,
   version: number,
   labels: string[],
-) => `from langfuse import Active Trace
+) => `from activetrace import ActiveTrace
 
 # Initialize Active Trace client
-langfuse = Active Trace()
+active_trace = ActiveTrace()
 
 # Get production prompt
-prompt = langfuse.get_prompt("${name}")
+prompt = active_trace.get_prompt("${name}")
 
 # Get by label
 # You can use as many labels as you'd like to identify different deployment targets
-${labels.length > 0 ? labels.map((label) => `prompt = langfuse.get_prompt("${name}", label="${label}")`).join("\n") : ""}
+${labels.length > 0 ? labels.map((label) => `prompt = active_trace.get_prompt("${name}", label="${label}")`).join("\n") : ""}
 
 # Get by version number, usually not recommended as it requires code changes to deploy new prompt versions
-langfuse.get_prompt("${name}", version=${version})
+active_trace.get_prompt("${name}", version=${version})
 `;
 
 const getJsCode = (
   name: string,
   version: number,
   labels: string[],
-) => `import { LangfuseClient } from "@langfuse/client";
+) => `import { ActiveTraceClient } from "@activetrace/client";
 
 // Initialize the Active Trace client
-const langfuse = new LangfuseClient();
+const activeTrace = new ActiveTraceClient();
 
 // Get production prompt
-const prompt = await langfuse.prompt.get("${name}");
+const prompt = await activeTrace.prompt.get("${name}");
 
 // Get by label
 // You can use as many labels as you'd like to identify different deployment targets
-${labels.length > 0 ? labels.map((label) => `const prompt = await langfuse.prompt.get("${name}", { label: "${label}" })`).join("\n") : ""}
+${labels.length > 0 ? labels.map((label) => `const prompt = await activeTrace.prompt.get("${name}", { label: "${label}" })`).join("\n") : ""}
 
 // Get by version number, usually not recommended as it requires code changes to deploy new prompt versions
-await langfuse.prompt.get("${name}", { version: ${version} })
+await activeTrace.prompt.get("${name}", { version: ${version} })
 `;
 
 export const PromptDetail = ({

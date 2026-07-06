@@ -219,20 +219,9 @@ describe("createAgUiStream", () => {
       expect.objectContaining({
         tools: {
           langfuse_search: { server: "langfuse" },
-          langfuseDocs_search: expect.objectContaining({
-            server: "langfuseDocs",
-            execute: expect.any(Function),
-          }),
         },
       }),
     );
-    const agentConfig = vi.mocked(Agent).mock.calls[0]?.[0];
-    const docsSearchTool = agentConfig?.tools?.langfuseDocs_search;
-    await expect(docsSearchTool?.execute?.({}, {})).resolves.toMatchObject({
-      _meta: expect.objectContaining({
-        choices: expect.any(Array),
-      }),
-    });
     expect(persistedEvents.map((event) => event.type)).toEqual([
       EventType.RUN_STARTED,
       EventType.MESSAGES_SNAPSHOT,

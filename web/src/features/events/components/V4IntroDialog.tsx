@@ -53,42 +53,18 @@ export function V4IntroDialog({
                 New Saved Table Views
               </span>{" "}
               Save your table filters as an org-wide saved view so your whole
-              team starts from the same place.{" "}
-              <a
-                href="https://langfuse.com/faq/all/explore-observations-in-v4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary font-medium hover:underline"
-              >
-                Best practices &rarr;
-              </a>
+              team starts from the same place.
             </li>
           </ul>
           <div className="mt-3 rounded-md border border-yellow-300 bg-yellow-50 p-3 text-sm dark:border-yellow-700 dark:bg-yellow-950">
             <p className="text-yellow-900 dark:text-yellow-200">
               <span className="font-medium">Want traces to appear live?</span>{" "}
               Upgrade your SDK to the latest version. Older SDKs still work but
-              traces may take ~10 minutes to appear.{" "}
-              <a
-                href="https://langfuse.com/docs/observability/sdk/upgrade-path"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium underline hover:no-underline"
-              >
-                Upgrade guide &rarr;
-              </a>
+              traces may take ~10 minutes to appear.
             </p>
           </div>
         </DialogBody>
-        <DialogFooter className="items-center sm:justify-between">
-          <a
-            href="https://langfuse.com/docs/v4"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary text-sm font-medium hover:underline"
-          >
-            Read the v4 docs &rarr;
-          </a>
+        <DialogFooter className="items-center sm:justify-end">
           <Button onClick={onConfirm}>Understood &rarr;</Button>
         </DialogFooter>
       </DialogContent>

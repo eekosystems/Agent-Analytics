@@ -4,6 +4,9 @@ import { createMailTransport } from "../transport";
 import MembershipInvitationTemplate from "./MembershipInvitationEmailTemplate";
 import { logger } from "../../../logger";
 
+// Legacy Langfuse Cloud region map. Only used as a last-resort fallback when
+// NEXTAUTH_URL is not configured; self-hosted / white-label instances always
+// resolve invite links from NEXTAUTH_URL (the instance base URL) below.
 const langfuseUrls = {
   US: "https://us.cloud.langfuse.com",
   EU: "https://cloud.langfuse.com",
@@ -46,14 +49,18 @@ export const sendMembershipInvitationEmail = async ({
     return;
   }
 
+  // Prefer the instance base URL (NEXTAUTH_URL) so invite links always point
+  // to this deployment. The legacy cloud-region map is only consulted when
+  // NEXTAUTH_URL is missing entirely.
   const getAuthURL = () =>
-    env.NEXT_PUBLIC_LANGFUSE_CLOUD_REGION === "US" ||
+    env.NEXTAUTH_URL ||
+    (env.NEXT_PUBLIC_LANGFUSE_CLOUD_REGION === "US" ||
     env.NEXT_PUBLIC_LANGFUSE_CLOUD_REGION === "EU" ||
     env.NEXT_PUBLIC_LANGFUSE_CLOUD_REGION === "HIPAA" ||
     env.NEXT_PUBLIC_LANGFUSE_CLOUD_REGION === "JP" ||
     env.NEXT_PUBLIC_LANGFUSE_CLOUD_REGION === "STAGING"
       ? langfuseUrls[env.NEXT_PUBLIC_LANGFUSE_CLOUD_REGION]
-      : env.NEXTAUTH_URL;
+      : undefined);
 
   const authUrl = getAuthURL();
   if (!authUrl) {

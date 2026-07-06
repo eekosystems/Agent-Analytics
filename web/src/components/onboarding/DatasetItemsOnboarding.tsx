@@ -2,7 +2,6 @@ import { useState } from "react";
 import { SplashScreen } from "@/src/components/ui/splash-screen";
 import { Braces, Code, ListTree, Upload } from "lucide-react";
 import DocPopup from "@/src/components/layouts/doc-popup";
-import Link from "next/link";
 import {
   Dialog,
   DialogContent,
@@ -154,16 +153,11 @@ export const DatasetItemsOnboarding = ({
           </DialogContent>
         </Dialog>
 
-        <Link
-          href="https://langfuse.com/docs/evaluation/experiments/datasets#create-items-from-production-data"
-          target="_blank"
-        >
-          <DatasetItemEntryPointRow
-            icon={<Code className="h-5 w-5" />}
-            title="Add via Code"
-            description="Use our Python/TS/JS SDKs or custom API"
-          />
-        </Link>
+        <DatasetItemEntryPointRow
+          icon={<Code className="h-5 w-5" />}
+          title="Add via Code"
+          description="Use our Python/TS/JS SDKs or custom API"
+        />
 
         <DatasetItemEntryPointRow
           icon={<ListTree className="h-5 w-5" />}
@@ -172,8 +166,8 @@ export const DatasetItemsOnboarding = ({
           comingSoon
           docPopup={{
             description:
-              "Creating items from production data is supported on single trace level. Click to view docs for more details.",
-            href: "https://langfuse.com/docs/evaluation/experiments/datasets#create-items-from-production-data",
+              "Creating items from production data is supported on single trace level.",
+            href: "",
           }}
         />
       </div>

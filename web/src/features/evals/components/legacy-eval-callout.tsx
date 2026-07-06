@@ -5,7 +5,6 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/src/components/ui/tooltip";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { Info } from "lucide-react";
 import { isLegacyEvalTarget } from "@/src/features/evals/utils/typeHelpers";
@@ -48,17 +47,10 @@ export function LegacyEvalCallout({
         </>
       )}
     >
-      <span>This evaluator </span>
-      <span className="text-dark-blue hover:opacity-80">
-        <Link
-          href="https://langfuse.com/faq/all/llm-as-a-judge-migration"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          requires changes{" "}
-        </Link>
+      <span>
+        This evaluator requires changes to benefit from new features and
+        performance improvements.
       </span>
-      <span>to benefit from new features and performance improvements.</span>
       <Tooltip>
         <TooltipTrigger asChild>
           <Info className="ml-1 inline h-4 w-4 cursor-help" />

@@ -52,9 +52,8 @@ export const sendBlobStorageExportFailedEmail = async ({
       to: receiverEmails,
       from: {
         address: env.EMAIL_FROM_ADDRESS,
-        name: "Langfuse",
+        name: "Active Trace",
       },
-      replyTo: "support@langfuse.com",
       subject,
       html,
     };

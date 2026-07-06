@@ -109,7 +109,7 @@ describe("Admin API Key Authentication", () => {
         headers: {
           authorization: `Bearer ${ADMIN_API_KEY}`,
           "x-langfuse-admin-api-key": ADMIN_API_KEY,
-          "x-langfuse-project-id": projectId,
+          "x-activetrace-project-id": projectId,
         },
       } as NextApiRequest;
 
@@ -121,6 +121,22 @@ describe("Admin API Key Authentication", () => {
       expect(result.scope.apiKeyId).toBe("ADMIN_API_KEY");
       expect(result.scope.publicKey).toBe("ADMIN_API_KEY");
       expect(result.scope.accessLevel).toBe("project");
+    });
+
+    it("should accept the legacy x-langfuse-project-id header", async () => {
+      const mockReq = {
+        headers: {
+          authorization: `Bearer ${ADMIN_API_KEY}`,
+          "x-langfuse-admin-api-key": ADMIN_API_KEY,
+          "x-langfuse-project-id": projectId,
+        },
+      } as NextApiRequest;
+
+      const result = await verifyAuth(mockReq, true);
+
+      expect(result.validKey).toBe(true);
+      expect(result.scope.projectId).toBe(projectId);
+      expect(result.scope.apiKeyId).toBe("ADMIN_API_KEY");
     });
 
     it("should fall back to basic auth when no Bearer header", async () => {
@@ -233,7 +249,7 @@ describe("Admin API Key Authentication", () => {
       });
     });
 
-    it("should fail without x-langfuse-project-id header", async () => {
+    it("should fail without x-activetrace-project-id header", async () => {
       const mockReq = {
         headers: {
           authorization: `Bearer ${ADMIN_API_KEY}`,
@@ -244,7 +260,7 @@ describe("Admin API Key Authentication", () => {
       await expect(verifyAuth(mockReq, true)).rejects.toEqual({
         status: 400,
         message:
-          "x-langfuse-project-id header is required for admin API key authentication",
+          "x-activetrace-project-id header is required for admin API key authentication",
       });
     });
 

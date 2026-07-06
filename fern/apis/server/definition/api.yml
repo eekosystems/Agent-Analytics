@@ -4,12 +4,12 @@ docs: |
 
   Authenticate with the API using [Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication), get API keys in the project settings:
 
-  - username: Langfuse Public Key
-  - password: Langfuse Secret Key
+  - username: Active Trace Public Key
+  - password: Active Trace Secret Key
 
   ## Exports
 
-  - OpenAPI spec: https://cloud.langfuse.com/generated/api/openapi.yml
+  - OpenAPI spec: available at /generated/api/openapi.yml on your instance
 
 error-discrimination:
   strategy: status-code

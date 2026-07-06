@@ -51,7 +51,6 @@ import { useHasProjectAccess } from "@/src/features/rbac/utils/checkProjectAcces
 import { Skeleton } from "@/src/components/ui/skeleton";
 import { usdFormatter } from "@/src/utils/numbers";
 import { Callout } from "@/src/components/ui/callout";
-import Link from "next/link";
 import { Badge } from "@/src/components/ui/badge";
 import {
   Tooltip,
@@ -84,21 +83,10 @@ function LegacyBadgeCell({ status }: { status: string }) {
                 <p className="font-medium">Action required</p>
                 <p className="text-muted-foreground">
                   This evaluator requires changes to benefit from new features
-                  and performance improvements. Please follow{" "}
-                  <Link
-                    href="https://langfuse.com/faq/all/llm-as-a-judge-migration"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-dark-blue font-medium hover:opacity-80"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                    }}
-                  >
-                    this guide
-                  </Link>{" "}
-                  to upgrade to the new version. <br /> <br /> If you do not
-                  upgrade, your evaluator will continue to run, but you will not
-                  benefit from improvements.
+                  and performance improvements. Please upgrade to the new
+                  version. <br /> <br /> If you do not upgrade, your evaluator
+                  will continue to run, but you will not benefit from
+                  improvements.
                 </p>
               </div>
             </TooltipContent>
@@ -452,16 +440,7 @@ export default function EvaluatorTable({ projectId }: { projectId: string }) {
                 Some of your evaluators (marked &quot;Legacy&quot;) require
                 changes{" "}
               </span>
-              <span>to benefit from new features and improvements. </span>
-              <Link
-                href="https://langfuse.com/faq/all/llm-as-a-judge-migration"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-dark-blue font-medium hover:opacity-80"
-              >
-                Learn what is changing and how to upgrade
-              </Link>
-              <span>.</span>
+              <span>to benefit from new features and improvements.</span>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Info className="ml-1 inline h-4 w-4 cursor-help" />

@@ -1,5 +1,4 @@
 import { useCallback } from "react";
-import { ExternalLink } from "lucide-react";
 import { ScoreCombobox } from "./charts/ScoreCombobox";
 import { ObjectTypeFilter } from "./charts/ObjectTypeFilter";
 import { TimeRangePicker } from "@/src/components/date-picker";
@@ -92,15 +91,6 @@ export function ScoreAnalyticsHeader({
                 Score analytics is currently in beta. We&apos;re actively
                 improving this feature and would love to hear your feedback.
               </p>
-              <a
-                href="https://langfuse.com/discussions"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
-              >
-                Share feedback on GitHub Discussions
-                <ExternalLink className="h-3 w-3" />
-              </a>
             </div>
           </HoverCardContent>
         </HoverCard>

@@ -1,0 +1,16 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "activetrace"
+version = "0.1.0"
+description = "Active Trace SDK — observability and analytics for AI applications"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Active Trace" }]
+dependencies = ["langfuse>=3,<4"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["activetrace"]

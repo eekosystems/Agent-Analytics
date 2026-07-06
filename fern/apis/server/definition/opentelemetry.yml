@@ -7,7 +7,7 @@ service:
       docs: |
         **OpenTelemetry Traces Ingestion Endpoint**
 
-        This endpoint implements the OTLP/HTTP specification for trace ingestion, providing native OpenTelemetry integration for Langfuse Observability.
+        This endpoint implements the OTLP/HTTP specification for trace ingestion, providing native OpenTelemetry integration for Active Trace Observability.
 
         **Supported Formats:**
         - Binary Protobuf: `Content-Type: application/x-protobuf`
@@ -18,9 +18,6 @@ service:
         - Conforms to [OTLP/HTTP Trace Export](https://opentelemetry.io/docs/specs/otlp/#otlphttp)
         - Implements `ExportTraceServiceRequest` message format
 
-        **Documentation:**
-        - Integration guide: https://langfuse.com/integrations/native/opentelemetry
-        - Data model: https://langfuse.com/docs/observability/data-model
       method: POST
       path: /otel/v1/traces
       request:
@@ -131,7 +128,7 @@ types:
         docs: End time in nanoseconds since Unix epoch
       attributes:
         type: optional<list<OtelAttribute>>
-        docs: Span attributes including Langfuse-specific attributes (langfuse.observation.*)
+        docs: Span attributes including Active Trace-specific attributes (langfuse.observation.*)
       status:
         type: optional<unknown>
         docs: Span status object

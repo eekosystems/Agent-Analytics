@@ -25,7 +25,7 @@ import Link from "next/link";
 import { LangfuseLogo } from "@/src/components/LangfuseLogo";
 import { SidebarNotifications } from "@/src/components/nav/sidebar-notifications";
 import { type RouteGroup } from "@/src/components/layouts/routes";
-import { ExternalLink, Grid2X2 } from "lucide-react";
+import { Grid2X2 } from "lucide-react";
 import { useLangfuseCloudRegion } from "@/src/features/organizations/hooks";
 
 type AppSidebarProps = {
@@ -91,22 +91,6 @@ const DemoBadge = () => {
       <SidebarGroupLabel>Demo Project (view only)</SidebarGroupLabel>
       <SidebarGroupContent>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              tooltip="Use Demo App to create traces"
-              variant="cta"
-            >
-              <Link
-                href="https://langfuse.com/docs/demo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ExternalLink className="h-4 w-4" />
-                <span>Use Demo App</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton asChild tooltip="Your Active Trace Organizations">
               <Link href="/">

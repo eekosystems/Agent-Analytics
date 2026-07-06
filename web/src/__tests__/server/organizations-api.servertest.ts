@@ -656,8 +656,8 @@ describe("Admin Organizations API", () => {
       );
 
       expect(response.status).toBe(201);
-      expect(response.body.publicKey).toMatch(/^pk-lf-/);
-      expect(response.body.secretKey).toMatch(/^sk-lf-/);
+      expect(response.body.publicKey).toMatch(/^pk-at-/);
+      expect(response.body.secretKey).toMatch(/^sk-at-/);
       expect(response.body.note).toBe("Test API Key");
 
       // Verify the API key was actually created in the database

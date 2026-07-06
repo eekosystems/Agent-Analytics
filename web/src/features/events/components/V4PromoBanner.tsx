@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import { ZapIcon, X, ExternalLink } from "lucide-react";
+import { ZapIcon, X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { Button } from "@/src/components/ui/button";
 import useLocalStorage from "@/src/components/useLocalStorage";
@@ -13,8 +12,6 @@ import { useV4Beta } from "@/src/features/events/hooks/useV4Beta";
 import { V4IntroDialog } from "@/src/features/events/components/V4IntroDialog";
 import { usePostHogClientCapture } from "@/src/features/posthog-analytics/usePostHogClientCapture";
 
-const CHANGELOG_URL =
-  "https://langfuse.com/changelog/2026-03-10-simplify-for-scale";
 const DISMISSED_STORAGE_KEY = "v4-beta-promo-banner:v1:dismissed";
 const V4_BETA_PROMO_BANNER_ID = "v4-beta-promo-banner";
 const V4_BETA_PROMO_BANNER_ORDER = 25;
@@ -114,15 +111,6 @@ export function V4PromoBanner() {
             </button>{" "}
             toggle for a more performant experience.{" "}
           </span>
-
-          <Link
-            href={CHANGELOG_URL}
-            target="_blank"
-            className="flex flex-row items-center gap-1 whitespace-nowrap underline underline-offset-2"
-          >
-            Learn more
-            <ExternalLink className="h-3 w-3 shrink-0" />
-          </Link>
         </p>
         <Button
           variant="ghost"

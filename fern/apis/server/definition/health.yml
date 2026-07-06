@@ -16,7 +16,7 @@ types:
     properties:
       version:
         type: string
-        docs: Langfuse server version
+        docs: Active Trace server version
       status: string
     examples:
       - value:

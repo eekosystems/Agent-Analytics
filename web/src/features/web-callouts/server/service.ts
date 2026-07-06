@@ -205,7 +205,7 @@ export const invokeWebCalloutEndpoint = async ({
     const decryptedHeaders = decryptWebCalloutHeaders(endpoint.requestHeaders);
     const outboundHeaders = new Headers();
     outboundHeaders.set("Content-Type", "application/json");
-    outboundHeaders.set("User-Agent", "Langfuse/1.0");
+    outboundHeaders.set("User-Agent", "ActiveTrace/1.0");
 
     for (const [name, value] of Object.entries(decryptedHeaders)) {
       outboundHeaders.set(name, value);

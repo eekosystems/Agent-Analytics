@@ -18,7 +18,7 @@ import {
   useQueryOrganization,
 } from "@/src/features/organizations/hooks";
 import { Card } from "@/src/components/ui/card";
-import { LockIcon, ExternalLink } from "lucide-react";
+import { LockIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 
 export default function AIFeatureSwitch() {
@@ -125,16 +125,7 @@ export default function AIFeatureSwitch() {
               <i>can</i> be sent to AWS Bedrock within the Langfuse data region.
               Traces are sent to Langfuse Cloud in your data region. Your data
               will not be used for training models. Applicable HIPAA, SOC2,
-              GDPR, and ISO 27001 compliance remains intact.{" "}
-              <a
-                href="https://langfuse.com/security/ai-features"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary inline-flex items-center gap-1 hover:underline"
-              >
-                More details in the docs here.
-                <ExternalLink className="h-3 w-3" />
-              </a>
+              GDPR, and ISO 27001 compliance remains intact.
             </p>
           </div>
           <div className="relative">
@@ -198,17 +189,6 @@ export default function AIFeatureSwitch() {
               AI features for your organization. When enabled, any data{"  "}
               <i>can</i> be sent to AWS Bedrock in your data region for
               processing.
-              <br />
-              <br />{" "}
-              <a
-                href="https://langfuse.com/security/ai-features"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary inline-flex items-center gap-1 hover:underline"
-              >
-                Learn more in the docs.
-                <ExternalLink className="h-3 w-3" />
-              </a>
             </span>
             <p className="text-muted-foreground mt-3 text-sm">
               Are you sure you want to proceed?

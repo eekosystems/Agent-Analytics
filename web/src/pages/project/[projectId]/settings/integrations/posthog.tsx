@@ -47,7 +47,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { type z } from "zod";
-import { Info, ExternalLink } from "lucide-react";
+import { Info } from "lucide-react";
 
 export default function PosthogIntegrationSettings() {
   const router = useRouter();
@@ -79,13 +79,6 @@ export default function PosthogIntegrationSettings() {
           { name: "Settings", href: `/project/${projectId}/settings` },
         ],
         actionButtonsLeft: <>{status && <StatusBadge type={status} />}</>,
-        actionButtonsRight: (
-          <Button asChild variant="secondary">
-            <Link href="https://langfuse.com/integrations/analytics/posthog">
-              Integration Docs ↗
-            </Link>
-          </Button>
-        ),
       }}
     >
       <p className="text-primary mb-4 text-sm">
@@ -93,7 +86,7 @@ export default function PosthogIntegrationSettings() {
         <Link href="https://posthog.com" className="underline">
           PostHog
         </Link>{" "}
-        (OSS product analytics) to make Langfuse events/metrics available in
+        (OSS product analytics) to make Active Trace events/metrics available in
         your PostHog dashboards. Upon activation, all historical data from your
         project will be synced. After the initial sync, new data is
         automatically synced every hour to keep your PostHog dashboards up to
@@ -265,17 +258,6 @@ const PostHogIntegrationSettings = ({
                           </div>
                         </div>
                       ))}
-                      <div className="border-t pt-2">
-                        <a
-                          href="https://langfuse.com/docs/integrations/export-sources"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary inline-flex items-center gap-1 text-xs hover:underline"
-                        >
-                          For further information see
-                          <ExternalLink className="h-3 w-3" />
-                        </a>
-                      </div>
                     </TooltipContent>
                   </Tooltip>
                 </FormLabel>

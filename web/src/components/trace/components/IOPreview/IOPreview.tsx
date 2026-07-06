@@ -11,7 +11,6 @@ import { IOPreviewJSON, type IOPreviewJSONProps } from "./IOPreviewJSON";
 import { IOPreviewJSONSimple } from "./IOPreviewJSONSimple";
 import { IOPreviewPretty } from "./IOPreviewPretty";
 import { Button } from "@/src/components/ui/button";
-import { ActionButton } from "@/src/components/ActionButton";
 import { BookOpen, X } from "lucide-react";
 
 export type { ViewMode };
@@ -318,15 +317,6 @@ export function IOPreview({
             <p className="text-muted-foreground max-w-sm text-sm">
               Add it in your code to make debugging a lot easier.
             </p>
-            <ActionButton
-              variant="outline"
-              size="sm"
-              href="https://langfuse.com/faq/all/empty-trace-input-and-output"
-              trackingEventName="notification:click_link"
-              trackingProps={{ notification_id: EMPTY_IO_ALERT_ID }}
-            >
-              View Documentation
-            </ActionButton>
           </div>
         </div>
       )}

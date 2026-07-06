@@ -12,13 +12,13 @@ service:
       docs: |
         Create an evaluator in the authenticated project.
 
-        Use evaluators to define **how** Langfuse should score data.
+        Use evaluators to define **how** Active Trace should score data.
         LLM-as-a-judge evaluators define a prompt, expected structured output, and optional model configuration.
         Code evaluators define source code and a runtime language.
 
         Naming behavior:
-        - If this is a new evaluator name in your project, Langfuse creates version `1`.
-        - If the name already exists in your project, Langfuse creates the next version and returns it.
+        - If this is a new evaluator name in your project, Active Trace creates version `1`.
+        - If the name already exists in your project, Active Trace creates the next version and returns it.
         - When a new project version is created, existing evaluation rules in that project automatically move to the newest version for that evaluator name.
 
         Recommended workflow:
@@ -28,14 +28,14 @@ service:
         4. Create one or more evaluation rules that reference the returned evaluator family using `name` and `scope`.
 
         Code evaluator validation:
-        - At creation, Langfuse only validates the request shape
+        - At creation, Active Trace only validates the request shape
         - The `sourceCode` itself is not executed here. It is first run (preflight-tested against a sample observation) when you link the evaluator to an evaluation rule, so runtime errors in the code surface at evaluation-rule creation, not at evaluator creation.
 
         Recovery guidance:
         - `422` with `code=evaluator_preflight_failed`: the evaluator cannot run with the resolved model configuration. Add a valid explicit `modelConfig`, or configure the project's default evaluation model, then retry the same request.
         - `400` with `code=invalid_body`: the request shape is malformed. Use the structured `details.issues` array to fix the specific fields and retry.
         - `400` with `code=invalid_body` on `outputDefinition`: for `type=llm_as_judge`, send `dataType`, `reasoning.description`, and `score.description`. Do not send `version`; it is not part of the public request shape.
-        - If `type` is omitted, Langfuse treats the request as `type=llm_as_judge` for backwards compatibility. New clients should send `type` explicitly.
+        - If `type` is omitted, Active Trace treats the request as `type=llm_as_judge` for backwards compatibility. New clients should send `type` explicitly.
 
         Unstable API note:
         - This surface may evolve while the underlying evaluation data model is being redesigned.
@@ -113,7 +113,7 @@ service:
           docs: |
             Create a TypeScript code evaluator named `exact-match`.
 
-            Send only the `evaluate` function; Langfuse injects the `EvaluationContext`,
+            Send only the `evaluate` function; Active Trace injects the `EvaluationContext`,
             `EvaluationResult`, and `Score` type definitions at runtime.
             Code evaluators always expose the fixed runtime payload variables and do not take a `mapping`.
           request:
@@ -179,7 +179,7 @@ service:
           docs: |
             Create a Python code evaluator named `exact-match`.
 
-            Send only the `evaluate` function; Langfuse injects the `EvaluationContext`,
+            Send only the `evaluate` function; Active Trace injects the `EvaluationContext`,
             `EvaluationResult`, and `Score` definitions at runtime.
             Code evaluators always expose the fixed runtime payload variables and do not take a `mapping`.
           request:
@@ -187,7 +187,7 @@ service:
             type: code
             sourceCode: |
               def evaluate(ctx: EvaluationContext) -> EvaluationResult:
-                  """Evaluates one observation and returns one or more Langfuse scores."""
+                  """Evaluates one observation and returns one or more Active Trace scores."""
                   input = ctx.observation.input
                   matches_output = input is not None and ctx.observation.output == input
 
@@ -221,7 +221,7 @@ service:
                 - experimentItemMetadata
               sourceCode: |
                 def evaluate(ctx: EvaluationContext) -> EvaluationResult:
-                    """Evaluates one observation and returns one or more Langfuse scores."""
+                    """Evaluates one observation and returns one or more Active Trace scores."""
                     input = ctx.observation.input
                     matches_output = input is not None and ctx.observation.output == input
 
@@ -250,7 +250,7 @@ service:
 
         Important behavior:
         - This endpoint returns the latest version of each available evaluator.
-        - Results can include evaluators from your project and Langfuse-managed evaluators.
+        - Results can include evaluators from your project and Active Trace-managed evaluators.
         - If the same evaluator name exists in both places, both are returned as separate items with different `scope` values.
       method: GET
       path: /evaluators
@@ -300,7 +300,7 @@ service:
         Important behavior:
         - This deletes the evaluator including all of its stored versions; `evaluatorId` may reference any version.
         - The API returns `409` while evaluation rules still reference the evaluator. Delete those evaluation rules first.
-        - Langfuse-managed evaluators (`scope=managed`) cannot be deleted; the API returns `403`.
+        - Active Trace-managed evaluators (`scope=managed`) cannot be deleted; the API returns `403`.
         - Scores already produced by the evaluator are not deleted.
       method: DELETE
       path: /evaluators/{evaluatorId}
@@ -337,7 +337,7 @@ types:
 
       For agent clients, the most important fields are:
       - `type`: determines which evaluator fields are present
-      - `variables`: for LLM evaluators, use these exact names when building the evaluation-rule `mapping` array. LLM evaluators require every variable to be mapped. Code evaluators always expose the fixed runtime payload fields and Langfuse maps them automatically.
+      - `variables`: for LLM evaluators, use these exact names when building the evaluation-rule `mapping` array. LLM evaluators require every variable to be mapped. Code evaluators always expose the fixed runtime payload fields and Active Trace maps them automatically.
 
       Versioning behavior:
       - `GET /evaluators` returns the latest version of each available evaluator.
@@ -363,13 +363,13 @@ types:
         docs: Version number of this evaluator.
       scope:
         type: commons.EvaluatorScope
-        docs: "Where this evaluator comes from: your project or Langfuse-managed defaults."
+        docs: "Where this evaluator comes from: your project or Active Trace-managed defaults."
       variables:
         type: list<string>
         docs: |
           Variables that can be mapped when creating an evaluation rule.
 
-          LLM evaluators require every variable to be mapped exactly once. Code evaluators always expose the fixed runtime payload fields and Langfuse maps them automatically.
+          LLM evaluators require every variable to be mapped exactly once. Code evaluators always expose the fixed runtime payload fields and Active Trace maps them automatically.
       evaluationRuleCount:
         type: integer
         docs: Number of evaluation rules in the project that currently use this evaluator version.
@@ -418,9 +418,9 @@ types:
     docs: |
       Request body for creating an evaluator.
 
-      If the same `name` already exists in your project, Langfuse creates the next version and returns it.
+      If the same `name` already exists in your project, Active Trace creates the next version and returns it.
       Existing evaluation rules in the same project are then moved to that new latest version automatically.
-      If `type` is omitted, Langfuse defaults it to `llm_as_judge` for backwards compatibility.
+      If `type` is omitted, Active Trace defaults it to `llm_as_judge` for backwards compatibility.
     discriminant: type
     union:
       llm_as_judge:

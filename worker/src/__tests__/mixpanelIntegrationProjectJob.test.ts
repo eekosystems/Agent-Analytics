@@ -33,9 +33,9 @@ const h = vi.hoisted(() => {
       );
       timeline.push(`${label}:start`);
       await Promise.resolve();
-      yield { langfuse_id: `${label}-1` };
+      yield { activetrace_id: `${label}-1` };
       await Promise.resolve();
-      yield { langfuse_id: `${label}-2` };
+      yield { activetrace_id: `${label}-2` };
       timeline.push(`${label}:end`);
       state.activeStreams--;
     })();

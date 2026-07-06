@@ -6,6 +6,7 @@ const SENSITIVE_REDIRECT_HEADERS = new Set([
   "authorization",
   "cookie",
   "proxy-authorization",
+  "x-activetrace-signature",
   "x-langfuse-signature",
 ]);
 

@@ -104,7 +104,7 @@ export const SlackActionForm: React.FC<SlackActionFormProps> = ({
                   Select the Slack channel where notifications will be sent. For
                   private channels, invite the app first with{" "}
                   <code className="bg-muted rounded px-1 py-0.5">
-                    /invite @Langfuse
+                    /invite @Active Trace
                   </code>{" "}
                   in that channel.
                 </FormDescription>

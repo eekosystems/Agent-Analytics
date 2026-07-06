@@ -108,10 +108,6 @@ export const stripeProducts: StripeProduct[] = [
         "Support SLA",
         "Dedicated support engineer",
       ],
-      cta: {
-        label: "Contact Sales",
-        href: "https://langfuse.com/talk-to-us",
-      },
     },
   },
 ];

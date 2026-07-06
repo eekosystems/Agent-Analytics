@@ -617,15 +617,7 @@ export const InnerEvalTemplateForm = (props: {
                               No default model set. LLM-as-a-judge evaluations
                               require an LLM connection for scoring. This
                               default is used by all templates that don&apos;t
-                              specify their own model.{" "}
-                              <a
-                                href="https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge#how-llm-as-a-judge-works"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="underline"
-                              >
-                                Learn more.
-                              </a>
+                              specify their own model.
                             </>
                           }
                           className="text-sm font-normal"
@@ -997,16 +989,7 @@ function CodeEvalSdkVersionCallout({
           <span className="text-foreground text-sm">
             Code evaluators require JS SDK v4+ or Python SDK v3+. You can create
             this evaluator now, but it will only run once your project ingests
-            data with a compatible SDK.{" "}
-            <a
-              href="https://langfuse.com/docs/observability/sdk/upgrade-path"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-dark-blue font-medium hover:opacity-80"
-            >
-              Learn more
-            </a>
-            .
+            data with a compatible SDK.
           </span>
         </div>
       </AlertDescription>

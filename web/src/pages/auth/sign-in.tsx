@@ -735,13 +735,8 @@ export default function SignIn({
         {isLangfuseCloud && (
           <div className="bg-card mt-4 -mb-4 rounded-lg p-3 text-center text-sm sm:mx-auto sm:w-full sm:max-w-[480px] sm:rounded-lg sm:px-6">
             If you are experiencing issues signing in, please force refresh this
-            page (CMD + SHIFT + R) or clear your browser cache.{" "}
-            <a
-              href="mailto:support@langfuse.com"
-              className="text-primary-accent hover:text-hover-primary-accent cursor-pointer text-xs font-medium whitespace-nowrap"
-            >
-              (contact us)
-            </a>
+            page (CMD + SHIFT + R) or clear your browser cache. If the issue
+            persists, contact your administrator.
           </div>
         )}
 

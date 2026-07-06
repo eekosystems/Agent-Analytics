@@ -50,7 +50,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { type z } from "zod";
-import { Info, ExternalLink } from "lucide-react";
+import { Info } from "lucide-react";
 
 export default function MixpanelIntegrationSettings() {
   const router = useRouter();
@@ -82,13 +82,6 @@ export default function MixpanelIntegrationSettings() {
           { name: "Settings", href: `/project/${projectId}/settings` },
         ],
         actionButtonsLeft: <>{status && <StatusBadge type={status} />}</>,
-        actionButtonsRight: (
-          <Button asChild variant="secondary">
-            <Link href="https://langfuse.com/integrations/analytics/mixpanel">
-              Integration Docs ↗
-            </Link>
-          </Button>
-        ),
       }}
     >
       <p className="text-primary mb-4 text-sm">
@@ -96,7 +89,7 @@ export default function MixpanelIntegrationSettings() {
         <Link href="https://mixpanel.com" className="underline">
           Mixpanel
         </Link>{" "}
-        to sync your Langfuse traces, generations, and scores for advanced
+        to sync your Active Trace traces, generations, and scores for advanced
         product analytics. Upon activation, all historical data from your
         project will be synced. After the initial sync, new data is
         automatically synced every hour to keep your Mixpanel dashboards up to
@@ -289,17 +282,6 @@ const MixpanelIntegrationSettingsForm = ({
                           </div>
                         </div>
                       ))}
-                      <div className="border-t pt-2">
-                        <a
-                          href="https://langfuse.com/docs/integrations/export-sources"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary inline-flex items-center gap-1 text-xs hover:underline"
-                        >
-                          For further information see
-                          <ExternalLink className="h-3 w-3" />
-                        </a>
-                      </div>
                     </TooltipContent>
                   </Tooltip>
                 </FormLabel>

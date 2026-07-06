@@ -20,12 +20,12 @@ service:
         - `name` must be unique within the project for public evaluation rules
         - `target` must be `observation` or `experiment`
         - `evaluator.name` + `evaluator.scope` must identify an existing evaluator family returned by the evaluator endpoints
-        - Langfuse resolves that family to its latest version before saving the evaluation rule
+        - Active Trace resolves that family to its latest version before saving the evaluation rule
         - for `target=experiment`, use dataset `id` values from `GET /api/public/v2/datasets` when filtering by `datasetId`
         - for `llm_as_judge` evaluators, every evaluator prompt variable must be mapped exactly once
-        - for `code` evaluators, Langfuse uses the fixed code runtime mapping; omit `mapping` in create and update requests
+        - for `code` evaluators, Active Trace uses the fixed code runtime mapping; omit `mapping` in create and update requests
         - for user-provided `llm_as_judge` mappings, `expected_output` and `experiment_item_metadata` are only valid for `target=experiment`
-        - if `enabled=true`, Langfuse validates that the referenced evaluator can currently run
+        - if `enabled=true`, Active Trace validates that the referenced evaluator can currently run
         - at most 50 evaluation rules can be effectively active in one project at the same time
 
         If an evaluation rule with the same `name` already exists in the project, the API returns `409`.
@@ -272,11 +272,11 @@ service:
 
         Important behavior:
         - provide only the fields you want to change
-        - if you provide `evaluator`, Langfuse resolves that evaluator family to its latest version before saving
+        - if you provide `evaluator`, Active Trace resolves that evaluator family to its latest version before saving
         - changing `target`, `filter`, or an LLM-as-judge `mapping` must still produce a valid target-specific configuration
         - if you change `target` for an LLM-as-judge rule, also send a compatible `filter` and `mapping` in the same request unless the existing ones are still valid for the new target
-        - for `code` evaluator rules, omit `mapping`; Langfuse stores the fixed code runtime mapping automatically
-        - if the resulting config is enabled, Langfuse re-validates that the selected evaluator can run
+        - for `code` evaluator rules, omit `mapping`; Active Trace stores the fixed code runtime mapping automatically
+        - if the resulting config is enabled, Active Trace re-validates that the selected evaluator can run
         - if the update would move a non-active evaluation rule into the active state and the project already has 50 active evaluation rules, the API returns `409`
 
         Recovery guidance:
@@ -335,8 +335,8 @@ types:
 
       Important status semantics:
       - `enabled` is the desired on/off setting from the client
-      - `status` is the effective runtime state after Langfuse applies validation and blocking rules
-      - `enabled=true` with `status=paused` means the rule should run, but Langfuse has paused it until the underlying problem is fixed
+      - `status` is the effective runtime state after Active Trace applies validation and blocking rules
+      - `enabled=true` with `status=paused` means the rule should run, but Active Trace has paused it until the underlying problem is fixed
     properties:
       id:
         type: string
@@ -360,7 +360,7 @@ types:
         docs: Desired enabled state configured by the client.
       status:
         type: commons.EvaluationRuleStatus
-        docs: Effective runtime status after Langfuse applies validation and blocking rules.
+        docs: Effective runtime status after Active Trace applies validation and blocking rules.
       pausedReason:
         type: nullable<string>
         docs: Machine-readable reason when `status=paused`, otherwise `null`.
@@ -435,7 +435,7 @@ types:
       - choose `target=observation` or `target=experiment`
       - if `target=experiment` and you want a dataset filter, call `GET /api/public/v2/datasets` first and use dataset `id` values in `filter[].value`
       - for `llm_as_judge`, fetch or inspect the evaluator first and provide a complete variable mapping for every evaluator variable
-      - for `code`, do not send variables or mappings; Langfuse stores the fixed code runtime mapping automatically
+      - for `code`, do not send variables or mappings; Active Trace stores the fixed code runtime mapping automatically
       - optionally narrow execution with `filter`
       - set `enabled=true` only when you want live execution immediately
     discriminated: false
@@ -453,8 +453,8 @@ types:
         docs: |
           LLM-as-judge evaluator family to use.
 
-          Use `name`, `scope`, and `type` from the evaluator endpoints. If `type` is omitted, Langfuse defaults it to `llm_as_judge` for backwards compatibility.
-          Langfuse resolves that family to its latest version before saving the rule.
+          Use `name`, `scope`, and `type` from the evaluator endpoints. If `type` is omitted, Active Trace defaults it to `llm_as_judge` for backwards compatibility.
+          Active Trace resolves that family to its latest version before saving the rule.
       target:
         type: commons.EvaluationRuleTarget
         docs: Target object type to evaluate.
@@ -491,7 +491,7 @@ types:
           Code evaluator family to use.
 
           Use `name`, `scope`, and `type` from the evaluator endpoints.
-          Langfuse resolves that family to its latest version before saving the rule.
+          Active Trace resolves that family to its latest version before saving the rule.
       target:
         type: commons.EvaluationRuleTarget
         docs: Target object type to evaluate.
@@ -521,7 +521,7 @@ types:
       - If you only want to rename the rule or change sampling, send just those fields.
       - If you change to an LLM-as-judge `evaluator`, send a fresh `mapping` unless you are certain the existing mapping still matches the evaluator variables.
       - If you change `target` for an LLM-as-judge rule, usually send both `filter` and `mapping` in the same request.
-      - For code evaluator rules, omit `mapping`; Langfuse stores the fixed code runtime mapping automatically.
+      - For code evaluator rules, omit `mapping`; Active Trace stores the fixed code runtime mapping automatically.
       - If you change an experiment `datasetId` filter, call `GET /api/public/v2/datasets` and use dataset `id` values from that response.
     properties:
       name:
@@ -532,7 +532,7 @@ types:
         docs: |
           Updated evaluator family.
 
-          Langfuse resolves the provided evaluator family to its latest version before saving the rule.
+          Active Trace resolves the provided evaluator family to its latest version before saving the rule.
           A rule's evaluator type cannot be changed: provide `name` and `scope` for an evaluator family of the rule's current type. To use a different evaluator type, create a new rule.
       target:
         type: optional<commons.EvaluationRuleTarget>
@@ -554,7 +554,7 @@ types:
         docs: |
           Updated LLM-as-judge variable mappings.
 
-          Do not send this field for code evaluator rules. Langfuse stores the fixed code runtime mapping automatically and returns it in the response.
+          Do not send this field for code evaluator rules. Active Trace stores the fixed code runtime mapping automatically and returns it in the response.
 
   DeleteEvaluationRuleResponse:
     docs: Confirmation response returned after successful deletion.
@@ -575,7 +575,7 @@ types:
         docs: Evaluator family name.
       scope:
         type: commons.EvaluatorScope
-        docs: Whether the evaluator family is project-owned or Langfuse-managed.
+        docs: Whether the evaluator family is project-owned or Active Trace-managed.
 
   LlmAsJudgeEvaluationRuleEvaluatorReference:
     docs: LLM-as-judge evaluator family reference used when creating an evaluation rule.
@@ -585,7 +585,7 @@ types:
         docs: Evaluator family name.
       scope:
         type: commons.EvaluatorScope
-        docs: Whether the evaluator family is project-owned or Langfuse-managed.
+        docs: Whether the evaluator family is project-owned or Active Trace-managed.
       type:
         type: optional<LlmAsJudgeEvaluatorType>
         docs: Evaluator engine type. Defaults to `llm_as_judge` when omitted.
@@ -598,7 +598,7 @@ types:
         docs: Evaluator family name.
       scope:
         type: commons.EvaluatorScope
-        docs: Whether the evaluator family is project-owned or Langfuse-managed.
+        docs: Whether the evaluator family is project-owned or Active Trace-managed.
       type:
         type: literal<"code">
         docs: Must be `code`.
@@ -622,7 +622,7 @@ types:
         docs: Evaluator family name.
       scope:
         type: commons.EvaluatorScope
-        docs: Whether the evaluator family is project-owned or Langfuse-managed.
+        docs: Whether the evaluator family is project-owned or Active Trace-managed.
       type:
         type: commons.EvaluatorType
         docs: Evaluator engine type.

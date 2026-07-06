@@ -982,14 +982,6 @@ export default function ScoresTable({
               noResultsMessage={
                 <div className="flex flex-col items-center">
                   <span>No scores found.</span>
-                  <a
-                    href="https://langfuse.com/faq/all/what-are-scores"
-                    className="text-primary pointer-events-auto italic underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    What are scores?
-                  </a>
                 </div>
               }
               data={

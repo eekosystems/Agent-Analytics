@@ -6,7 +6,7 @@ info:
     ## General Notes
 
 
-    This admin API is only available on self-hosted instances, not on Langfuse
+    This admin API is only available on self-hosted instances, not on Active Trace
     Cloud.
 
     An administrator must set the `ADMIN_API_KEY` environment variable to use
@@ -25,16 +25,15 @@ info:
     ## Exports
 
 
-    - OpenAPI spec:
-    https://cloud.langfuse.com/generated/organizations-api/openapi.yml
+    - OpenAPI spec: available at /generated/organizations-api/openapi.yml on your instance
 
 
-    ## Looking for the Langfuse API?
+    ## Looking for the Active Trace API?
 
 
-    Are you looking for the full Langfuse API?
+    Are you looking for the full Active Trace API?
 
-    Check out our [API reference](https://api.reference.langfuse.com/#overview).
+    Check out the full API reference.
 paths:
   /api/admin/organizations:
     get:

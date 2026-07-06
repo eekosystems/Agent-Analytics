@@ -112,10 +112,6 @@ export function ResetPasswordPage({
       <ErrorPage
         title="Not available"
         message="Password reset is not configured on this instance"
-        additionalButton={{
-          label: "Setup instructions",
-          href: "https://langfuse.com/self-hosting/security/authentication-and-sso#auth-email-password",
-        }}
       />
     );
 

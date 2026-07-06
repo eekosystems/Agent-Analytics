@@ -32,6 +32,7 @@ describe("fetchWithSecureRedirects header handling", () => {
           Authorization: "Bearer token",
           Cookie: "session=secret",
           "Proxy-Authorization": "Basic proxy-secret",
+          "x-activetrace-signature": "t=1,v1=secret",
           "x-langfuse-signature": "t=1,v1=secret",
           "X-API-Key": "custom-secret",
           "x-custom-header": "keep-me",
@@ -50,6 +51,7 @@ describe("fetchWithSecureRedirects header handling", () => {
     expect(finalHeaders.get("authorization")).toBe("Bearer token");
     expect(finalHeaders.get("cookie")).toBe("session=secret");
     expect(finalHeaders.get("proxy-authorization")).toBe("Basic proxy-secret");
+    expect(finalHeaders.get("x-activetrace-signature")).toBe("t=1,v1=secret");
     expect(finalHeaders.get("x-langfuse-signature")).toBe("t=1,v1=secret");
     expect(finalHeaders.get("x-api-key")).toBe("custom-secret");
     expect(finalHeaders.get("x-custom-header")).toBe("keep-me");
@@ -77,6 +79,7 @@ describe("fetchWithSecureRedirects header handling", () => {
           Authorization: "Bearer token",
           Cookie: "session=secret",
           "Proxy-Authorization": "Basic proxy-secret",
+          "x-activetrace-signature": "t=1,v1=secret",
           "x-langfuse-signature": "t=1,v1=secret",
           "X-API-Key": "custom-secret",
           "x-custom-header": "keep-me",
@@ -95,6 +98,7 @@ describe("fetchWithSecureRedirects header handling", () => {
     expect(finalHeaders.get("authorization")).toBeNull();
     expect(finalHeaders.get("cookie")).toBeNull();
     expect(finalHeaders.get("proxy-authorization")).toBeNull();
+    expect(finalHeaders.get("x-activetrace-signature")).toBeNull();
     expect(finalHeaders.get("x-langfuse-signature")).toBeNull();
     expect(finalHeaders.get("x-api-key")).toBeNull();
     expect(finalHeaders.get("x-custom-header")).toBe("keep-me");
@@ -108,6 +112,7 @@ describe("fetchWithSecureRedirects header handling", () => {
           "authorization",
           "cookie",
           "proxy-authorization",
+          "x-activetrace-signature",
           "x-api-key",
           "x-langfuse-signature",
         ],

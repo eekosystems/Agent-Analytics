@@ -7,7 +7,6 @@ import {
   Heading,
   Hr,
   Html,
-  Img,
   Preview,
   Section,
   Tailwind,
@@ -44,15 +43,6 @@ export const MembershipInvitationTemplate = ({
       <Tailwind>
         <Body className="mx-auto my-auto bg-background font-sans">
           <Container className="mx-auto my-10 w-[465px] rounded border border-solid border-[#eaeaea] p-5">
-            <Section className="mt-8">
-              <Img
-                src="https://static.langfuse.com/langfuse_logo_transactional_email.png"
-                width="40"
-                height="40"
-                alt="Active Trace"
-                className="mx-auto my-0"
-              />
-            </Section>
             <Heading className="mx-0 my-[30px] p-0 text-center text-2xl font-normal text-black">
               Join <strong>{orgName}</strong> on <strong>Active Trace</strong>
             </Heading>
@@ -70,7 +60,7 @@ export const MembershipInvitationTemplate = ({
               .
             </Text>
             <Section className="mb-4 mt-8 text-center">
-              {/* Note: inviteLink always refers to a root langfuse url and is not vulnerable to hyperlink injection attacks */}
+              {/* Note: inviteLink always refers to a root instance URL and is not vulnerable to hyperlink injection attacks */}
               <Button
                 className="rounded bg-black px-5 py-3 text-center text-xs font-semibold text-white no-underline"
                 href={inviteLink}

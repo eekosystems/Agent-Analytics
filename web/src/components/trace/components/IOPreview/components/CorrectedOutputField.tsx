@@ -16,7 +16,6 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/src/components/ui/hover-card";
-import Link from "next/link";
 import Spinner from "@/src/components/design-system/Spinner/Spinner";
 
 interface CorrectedOutputFieldProps {
@@ -178,16 +177,7 @@ export function CorrectedOutputField({
                 <HoverCardContent className="w-80 text-xs" side="right">
                   <p>
                     Corrected outputs allow you to save the expected output for
-                    a trace or observation. Learn more in the{" "}
-                    <Link
-                      href="https://langfuse.com/docs/observability/features/corrections"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-foreground underline"
-                    >
-                      documentation
-                    </Link>
-                    .
+                    a trace or observation.
                   </p>
                 </HoverCardContent>
               </HoverCard>

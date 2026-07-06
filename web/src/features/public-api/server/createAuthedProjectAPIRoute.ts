@@ -46,7 +46,7 @@ export type AuthedProjectAPIRouteConfig<
    * Admin API key authentication requires:
    * - Authorization: Bearer <ADMIN_API_KEY>
    * - x-langfuse-admin-api-key: <ADMIN_API_KEY> (must match exactly for redundancy)
-   * - x-langfuse-project-id: <project-id> (target project)
+   * - x-activetrace-project-id: <project-id> (target project; legacy x-langfuse-project-id is also accepted)
    *
    * This authentication method is ONLY available when NEXT_PUBLIC_LANGFUSE_CLOUD_REGION is not set (self-hosted).
    *
@@ -144,7 +144,7 @@ async function verifyApiKeyAuth(
  * This function checks if the request contains valid admin API key credentials:
  * 1. Authorization header must be Bearer token format with ADMIN_API_KEY value
  * 2. x-langfuse-admin-api-key header must match ADMIN_API_KEY env var exactly (for redundancy)
- * 3. x-langfuse-project-id header must be present and specify a valid project ID
+ * 3. x-activetrace-project-id header (or legacy x-langfuse-project-id) must be present and specify a valid project ID
  * 4. NEXT_PUBLIC_LANGFUSE_CLOUD_REGION must NOT be set (self-hosted instances only)
  *
  * The ADMIN_API_KEY must be set as an environment variable on the server.
@@ -162,7 +162,9 @@ async function verifyAdminApiKeyAuth(req: NextApiRequest): Promise<
 > {
   const authHeader = req.headers.authorization;
   const adminApiKeyHeader = req.headers["x-langfuse-admin-api-key"];
-  const projectIdHeader = req.headers["x-langfuse-project-id"];
+  const projectIdHeader =
+    req.headers["x-activetrace-project-id"] ??
+    req.headers["x-langfuse-project-id"];
 
   // If not attempting admin auth, return null to proceed with regular auth
   if (!authHeader?.startsWith("Bearer ") || !adminApiKeyHeader) return null;
@@ -212,7 +214,7 @@ async function verifyAdminApiKeyAuth(req: NextApiRequest): Promise<
     throw {
       status: 400,
       message:
-        "x-langfuse-project-id header is required for admin API key authentication",
+        "x-activetrace-project-id header is required for admin API key authentication",
     };
   }
 
@@ -307,7 +309,7 @@ export const createAuthedProjectAPIRoute = <
     ) {
       res.status(404).json({
         message:
-          "This endpoint is not available on deployments running in Langfuse v4 events_only mode. Learn more about Langfuse v4 at: https://langfuse.com/docs/v4",
+          "This endpoint is not available on deployments running in Active Trace v4 events-only mode.",
       });
       return;
     }

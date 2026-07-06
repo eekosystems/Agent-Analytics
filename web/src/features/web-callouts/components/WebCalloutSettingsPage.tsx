@@ -92,7 +92,8 @@ const webCalloutFormSchema = z
       if (WEB_CALLOUT_BLOCKED_HEADER_NAMES.has(lowerName)) {
         ctx.addIssue({
           code: "custom",
-          message: "This header is set by Active Trace and cannot be customized.",
+          message:
+            "This header is set by Active Trace and cannot be customized.",
           path: ["headers", index, "name"],
         });
       }
@@ -176,16 +177,7 @@ export function WebCalloutSettingsPage(props: { projectId: string }) {
       <p className="text-primary mb-4 text-sm">
         Configure a project-level callout. Your users can trigger a POST to an
         endpoint on trace, observation, and session detail screens. This can be
-        used to integrate with your services to trigger workflows. See the docs{" "}
-        <a
-          href="https://langfuse.com/docs/observability/features/web-callouts"
-          target="_blank"
-          rel="noreferrer"
-          className="underline underline-offset-2"
-        >
-          here
-        </a>{" "}
-        for more info.
+        used to integrate with your services to trigger workflows.
       </p>
 
       <div className="mb-4 flex justify-end">
@@ -403,17 +395,8 @@ function WebCalloutEndpointDialog(props: {
             {props.endpoint ? "Edit Callout Endpoint" : "Add Callout Endpoint"}
           </DialogTitle>
           <DialogDescription>
-            Active Trace sends a backend JSON POST when a user clicks a web callout
-            action.{" "}
-            <a
-              href="https://langfuse.com/docs/observability/features/web-callouts"
-              target="_blank"
-              rel="noreferrer"
-              className="underline underline-offset-2"
-            >
-              View docs
-            </a>
-            .
+            Active Trace sends a backend JSON POST when a user clicks a web
+            callout action.
           </DialogDescription>
         </DialogHeader>
 

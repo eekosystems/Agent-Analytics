@@ -926,8 +926,8 @@ describe("Projects API", () => {
 
     it("should create an API key with predefined keys", async () => {
       const note = `Test API Key with Predefined Keys ${randomUUID().substring(0, 8)}`;
-      const predefinedPublicKey = `pk-lf-${randomUUID()}`;
-      const predefinedSecretKey = `sk-lf-${randomUUID()}`;
+      const predefinedPublicKey = `pk-at-${randomUUID()}`;
+      const predefinedSecretKey = `sk-at-${randomUUID()}`;
 
       const response = await makeZodVerifiedAPICall(
         ApiKeyCreationResponseSchema,
@@ -957,6 +957,32 @@ describe("Projects API", () => {
       });
       expect(apiKey).not.toBeNull();
       expect(apiKey?.publicKey).toBe(predefinedPublicKey);
+    });
+
+    it("should create an API key with legacy pk-lf-/sk-lf- predefined keys", async () => {
+      const note = `Test API Key with Legacy Predefined Keys ${randomUUID().substring(0, 8)}`;
+      const predefinedPublicKey = `pk-lf-${randomUUID()}`;
+      const predefinedSecretKey = `sk-lf-${randomUUID()}`;
+
+      const response = await makeZodVerifiedAPICall(
+        ApiKeyCreationResponseSchema,
+        "POST",
+        `/api/public/projects/${projectId}/apiKeys`,
+        {
+          note,
+          publicKey: predefinedPublicKey,
+          secretKey: predefinedSecretKey,
+        },
+        createBasicAuthHeader(orgApiKey, orgSecretKey),
+        201,
+      );
+
+      expect(response.status).toBe(201);
+      expect(response.body.publicKey).toBe(predefinedPublicKey);
+      expect(response.body.secretKey).toBe(predefinedSecretKey);
+
+      // Store for cleanup
+      createdApiKeyId = response.body.id;
     });
 
     it("should return 400 when only publicKey is provided without secretKey", async () => {
@@ -999,10 +1025,10 @@ describe("Projects API", () => {
       );
     });
 
-    it("should return 400 when publicKey does not start with pk-lf-", async () => {
+    it("should return 400 when publicKey does not start with pk-at- or pk-lf-", async () => {
       const note = `Test API Key ${randomUUID().substring(0, 8)}`;
       const invalidPublicKey = `invalid-${randomUUID()}`;
-      const predefinedSecretKey = `sk-lf-${randomUUID()}`;
+      const predefinedSecretKey = `sk-at-${randomUUID()}`;
 
       const result = await makeAPICall(
         "POST",
@@ -1019,9 +1045,9 @@ describe("Projects API", () => {
       expect(result.body.message).toContain("publicKey must start with");
     });
 
-    it("should return 400 when secretKey does not start with sk-lf-", async () => {
+    it("should return 400 when secretKey does not start with sk-at- or sk-lf-", async () => {
       const note = `Test API Key ${randomUUID().substring(0, 8)}`;
-      const predefinedPublicKey = `pk-lf-${randomUUID()}`;
+      const predefinedPublicKey = `pk-at-${randomUUID()}`;
       const invalidSecretKey = `invalid-${randomUUID()}`;
 
       const result = await makeAPICall(

@@ -63,7 +63,7 @@ export const sendCommentMentionEmail = async ({
       to: mentionedUserEmail,
       from: {
         address: env.EMAIL_FROM_ADDRESS,
-        name: "Langfuse",
+        name: "Active Trace",
       },
       subject,
       html: htmlTemplate,

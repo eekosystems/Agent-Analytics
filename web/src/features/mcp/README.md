@@ -1,8 +1,6 @@
-# Langfuse MCP Server
+# Active Trace MCP Server
 
-Model Context Protocol (MCP) server for Langfuse, enabling AI assistants to interact with Langfuse programmatically.
-
-A complete list of tools can be seen under [mcp.reference.langfuse.com](https://mcp.reference.langfuse.com).
+Model Context Protocol (MCP) server for Active Trace, enabling AI assistants to interact with Active Trace programmatically.
 
 > ⚠️ **API stability**:
 > This MCP server is self-describing. Clients should dynamically inspect available tools and schemas rather than assuming a static interface.
@@ -12,7 +10,7 @@ A complete list of tools can be seen under [mcp.reference.langfuse.com](https://
 
 ### Prerequisites
 
-- Langfuse instance running locally
+- Active Trace instance running locally
 - Project-scoped API key (Public Key + Secret Key)
 - Claude Code or another MCP-compatible client
 
@@ -20,26 +18,26 @@ A complete list of tools can be seen under [mcp.reference.langfuse.com](https://
 
 1. **Get API Keys**
    - Navigate to `http://localhost:3000/project/{project-id}/settings`
-   - Create or copy a project-scoped API key (`pk-lf-...` and `sk-lf-...`)
+   - Create or copy a project-scoped API key (`pk-at-...` and `sk-at-...`)
    - Note: Organization-level keys are not supported
 
 2. **Encode Credentials**
 
    ```bash
-   echo -n "pk-lf-xxx:sk-lf-xxx" | base64
+   echo -n "pk-at-xxx:sk-at-xxx" | base64
    ```
 
    Output:
 
    ```
    // Example. Real token will be much longer
-   cGstbGYteHh4OnNrLWxmLXh4eA==
+   cGstYXQteHh4OnNrLWF0LXh4eA==
    ```
 
 3. **Add to Claude Code**
 
    ```bash
-   claude mcp add --transport http langfuse http://localhost:3000/api/public/mcp \
+   claude mcp add --transport http active-trace http://localhost:3000/api/public/mcp \
        --header "Authorization: Basic {your-base64-token}"
    ```
 
@@ -47,13 +45,13 @@ A complete list of tools can be seen under [mcp.reference.langfuse.com](https://
    In Claude Code: `List all prompts in the project`
 
 5. **Verify observation access**
-   In Claude Code: `List recent Langfuse observations`
+   In Claude Code: `List recent Active Trace observations`
 
 ## Architecture
 
 ### Stateless Design
 
-The Langfuse MCP server uses a **stateless per-request architecture**:
+The Active Trace MCP server uses a **stateless per-request architecture**:
 
 1. **Fresh server instance per request:** Each MCP request creates a new server instance
 2. **Context captured in closures:** Authentication context is captured in handler closures
@@ -92,7 +90,7 @@ This design:
   orgId: "org-456",           // Auto-injected from API key
   apiKeyId: "key-789",        // For audit logging
   accessLevel: "project",     // Required for MCP
-  publicKey: "pk-lf-..."      // For reference
+  publicKey: "pk-at-..."      // For reference
 }
 ```
 
@@ -118,29 +116,23 @@ All write operations should audit-log entries with before/after snapshots.
 
 ## Authentication
 
-All clients require BasicAuth authentication using your Langfuse API keys.
+All clients require BasicAuth authentication using your Active Trace API keys.
 
 ### 1. Generate Basic Auth Token
 
-Encode your Langfuse API keys (Public Key:Secret Key) to base64:
+Encode your Active Trace API keys (Public Key:Secret Key) to base64:
 
 ```bash
-echo -n "pk-lf-your-public-key:sk-lf-your-secret-key" | base64
+echo -n "pk-at-your-public-key:sk-at-your-secret-key" | base64
 ```
 
-This outputs your BasicAuth token (e.g., `cGstbGYt...`).
+This outputs your BasicAuth token (e.g., `cGstYXQt...`).
 
-### 2. Choose Your Langfuse URL
+### 2. Choose Your Active Trace URL
 
-**Langfuse Cloud:**
+**Hosted Instance:**
 
-- **EU Region:** `https://cloud.langfuse.com`
-- **US Region:** `https://us.langfuse.com`
-- **HIPAA:** `https://hipaa.langfuse.com`
-
-**Self-Hosted:**
-
-- Use your domain with HTTPS: `https://your-domain.com`
+- Use your instance host with HTTPS: `https://<your-instance-host>`
 - If a reverse proxy forwards a different `Host` header than `NEXTAUTH_URL`,
   either preserve the public host at the proxy or set
   `LANGFUSE_MCP_ALLOWED_HOSTS` to a comma-separated list of exact additional
@@ -155,23 +147,15 @@ This outputs your BasicAuth token (e.g., `cGstbGYt...`).
 
 ## Claude Code
 
-Register the Langfuse MCP server:
+Register the Active Trace MCP server:
 
 ```bash
-# Langfuse Cloud (EU)
-claude mcp add --transport http langfuse https://cloud.langfuse.com/api/public/mcp \
-    --header "Authorization: Basic {your-base64-token}"
-
-# Langfuse Cloud (US)
-claude mcp add --transport http langfuse https://us.langfuse.com/api/public/mcp \
-    --header "Authorization: Basic {your-base64-token}"
-
-# Self-Hosted (HTTPS required)
-claude mcp add --transport http langfuse https://your-domain.com/api/public/mcp \
+# Hosted Instance (HTTPS required)
+claude mcp add --transport http active-trace https://<your-instance-host>/api/public/mcp \
     --header "Authorization: Basic {your-base64-token}"
 
 # Local Development
-claude mcp add --transport http langfuse http://localhost:3000/api/public/mcp \
+claude mcp add --transport http active-trace http://localhost:3000/api/public/mcp \
     --header "Authorization: Basic {your-base64-token}"
 ```
 
@@ -185,8 +169,8 @@ Add to your Cursor MCP settings:
 {
   "mcp": {
     "servers": {
-      "langfuse": {
-        "url": "https://cloud.langfuse.com/api/public/mcp",
+      "active-trace": {
+        "url": "https://<your-instance-host>/api/public/mcp",
         "headers": {
           "Authorization": "Basic {your-base64-token}"
         }
@@ -196,4 +180,4 @@ Add to your Cursor MCP settings:
 }
 ```
 
-Replace `https://cloud.langfuse.com` with your Langfuse URL (see [Choose Your Langfuse URL](#2-choose-your-langfuse-url)).
+Replace `https://<your-instance-host>` with your Active Trace URL (see [Choose Your Active Trace URL](#2-choose-your-active-trace-url)).

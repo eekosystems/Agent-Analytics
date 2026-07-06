@@ -18,8 +18,8 @@ export async function hashSecretKey(key: string) {
 
 export async function generateKeySet() {
   return {
-    pk: `pk-lf-${randomUUID()}`,
-    sk: `sk-lf-${randomUUID()}`,
+    pk: `pk-at-${randomUUID()}`,
+    sk: `sk-at-${randomUUID()}`,
   };
 }
 

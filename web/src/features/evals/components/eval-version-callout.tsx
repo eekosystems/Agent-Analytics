@@ -38,16 +38,7 @@ const getCalloutContent = (
         <>
           This evaluator targets observations, which require JS SDK v4+ or
           Python SDK v3+. You can still configure this evaluator now—it will
-          start running once you upgrade.{" "}
-          <a
-            href="https://langfuse.com/docs/observability/sdk/upgrade-path"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-dark-blue font-medium hover:opacity-80"
-          >
-            Learn more
-          </a>
-          .
+          start running once you upgrade.
         </>
       ),
     };
@@ -63,16 +54,7 @@ const getCalloutContent = (
           <>
             The Experiment Runner SDK requires JS SDK v4.4+ or Python SDK v3.9+.
             You can still configure this evaluator now—it will start running
-            once you upgrade.{" "}
-            <a
-              href="https://langfuse.com/docs/evaluation/experiments/experiments-via-sdk#experiment-runner-sdk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-dark-blue font-medium hover:opacity-80"
-            >
-              Learn more about the Experiment Runner SDK.
-            </a>
-            .
+            once you upgrade.
           </>
         ),
       };
@@ -91,16 +73,7 @@ const getCalloutContent = (
           This evaluator targets traces from legacy low-level SDK methods for
           dataset runs that manually linked dataset items to traces. Consider
           upgrading to the Experiment Runner SDK for improved performance and
-          features.{" "}
-          <a
-            href="https://langfuse.com/docs/evaluation/experiments/experiments-via-sdk#experiment-runner-sdk"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-dark-blue font-medium hover:opacity-80"
-          >
-            Learn more
-          </a>
-          .
+          features.
         </>
       ),
     };
@@ -114,16 +87,7 @@ const getCalloutContent = (
       description: (
         <>
           Observation evaluators provide more granular control and an easier
-          workflow. We strongly recommend upgrading to observation evaluators.{" "}
-          <a
-            href="https://langfuse.com/faq/all/llm-as-a-judge-migration"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-dark-blue font-medium hover:opacity-80"
-          >
-            Learn more
-          </a>
-          .
+          workflow. We strongly recommend upgrading to observation evaluators.
         </>
       ),
     };

@@ -41,13 +41,13 @@ types:
         docs: Public traces are accessible via url without login
       environment:
         type: string
-        docs: The environment from which this trace originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with 'langfuse'.
+        docs: The environment from which this trace originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with reserved internal prefixes.
   TraceWithDetails: # GET /traces
     extends: Trace
     properties:
       htmlPath:
         type: string
-        docs: Path of trace in Langfuse UI
+        docs: Path of trace in Active Trace UI
       latency:
         type: optional<nullable<double>>
         docs: Latency of trace in seconds
@@ -65,7 +65,7 @@ types:
     properties:
       htmlPath:
         type: string
-        docs: Path of trace in Langfuse UI
+        docs: Path of trace in Active Trace UI
       latency:
         type: optional<nullable<double>>
         docs: Latency of trace in seconds
@@ -156,7 +156,7 @@ types:
         docs: The cost details of the observation. Key is the name of the cost metric, value is the cost in USD. The total key is the sum of all (non-total) cost metrics or the total value ingested.
       environment:
         type: string
-        docs: The environment from which this observation originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with 'langfuse'.
+        docs: The environment from which this observation originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with reserved internal prefixes.
 
   ObservationsView:
     extends: Observation
@@ -283,7 +283,7 @@ types:
         docs: The model name as provided by the user
       internalModelId:
         type: optional<nullable<string>>
-        docs: The internal model ID matched by Langfuse
+        docs: The internal model ID matched by Active Trace
       modelParameters:
         type: optional<unknown>
         docs: The parameters of the model used for the observation
@@ -429,7 +429,7 @@ types:
         docs: The annotation queue referenced by the score. Indicates if score was initially created while processing annotation queue.
       environment:
         type: string
-        docs: The environment from which this score originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with 'langfuse'.
+        docs: The environment from which this score originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with reserved internal prefixes.
   NumericScoreV1:
     extends: BaseScoreV1
     properties:
@@ -514,7 +514,7 @@ types:
         docs: The annotation queue referenced by the score. Indicates if score was initially created while processing annotation queue.
       environment:
         type: string
-        docs: The environment from which this score originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with 'langfuse'.
+        docs: The environment from which this score originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with reserved internal prefixes.
   NumericScore:
     extends: BaseScore
     properties:
@@ -931,7 +931,7 @@ types:
 
   # Utilities
   ModelUsageUnit:
-    docs: Unit of usage in Langfuse
+    docs: Unit of usage in Active Trace
     enum:
       - CHARACTERS
       - TOKENS

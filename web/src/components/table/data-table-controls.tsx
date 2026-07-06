@@ -733,16 +733,7 @@ export function CategoricalFacet({
                 {filterKey === "sessionId" ? (
                   <span>
                     Sessions group {tableName} together, which is useful for
-                    tracing multi-step workflows.{" "}
-                    <a
-                      href="https://langfuse.com/docs/observability/features/sessions"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-foreground underline"
-                    >
-                      See docs
-                    </a>{" "}
-                    to learn how to add sessions to your {tableName}.
+                    tracing multi-step workflows.
                   </span>
                 ) : filterKey === "name" ? (
                   <span>
@@ -751,16 +742,7 @@ export function CategoricalFacet({
                 ) : filterKey === "tags" ? (
                   <span>
                     Tags let you filter {tableName} according to custom
-                    categories (e.g. feature flags).{" "}
-                    <a
-                      href="https://langfuse.com/docs/observability/features/tags"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-foreground underline"
-                    >
-                      See docs
-                    </a>{" "}
-                    to learn how to add tags to your {tableName}.
+                    categories (e.g. feature flags).
                   </span>
                 ) : (
                   "No options found"
@@ -830,21 +812,6 @@ export function CategoricalFacet({
                     )}
                   </>
                 )}
-                {filterKey === "environment" &&
-                visibleOptionValues.length === 1 &&
-                visibleOptionValues[0]?.toLowerCase() === "default" ? (
-                  <div className="text-muted-foreground mt-2 px-2 text-xs">
-                    <a
-                      href="https://langfuse.com/docs/observability/features/environments"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-foreground underline"
-                    >
-                      See docs
-                    </a>{" "}
-                    on how to add environments to your {tableName}.
-                  </div>
-                ) : null}
               </>
             )}
           </div>

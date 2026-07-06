@@ -51,17 +51,6 @@ export default function Sessions() {
             <>
               A session is a collection of related traces, such as a
               conversation or thread. To begin, add a sessionId to the trace.
-              See{" "}
-              <a
-                href="https://langfuse.com/docs/observability/features/sessions"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="decoration-primary/30 hover:decoration-primary underline"
-                onClick={(e) => e.stopPropagation()}
-              >
-                docs
-              </a>{" "}
-              to learn more.
             </>
           ),
           href: "https://langfuse.com/docs/observability/features/sessions",

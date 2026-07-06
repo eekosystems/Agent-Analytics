@@ -9,14 +9,11 @@ import { api } from "@/src/utils/api";
 import { type RouterOutput } from "@/src/utils/types";
 import { usePostHogClientCapture } from "@/src/features/posthog-analytics/usePostHogClientCapture";
 import { Check, Copy, LockIcon, Sparkles } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
 const SKILLS_INSTALL_COMMAND =
-  "Install the Active Trace AI skill from github.com/langfuse/skills and use it to add tracing to this application with Active Trace following best practices.";
-const MANUAL_TRACING_DOCS_URL =
-  "https://langfuse.com/docs/observability/get-started";
+  "Instrument this application with LLM observability tracing so every LLM call is sent as a trace to my Active Trace instance. Use the ACTIVETRACE_PUBLIC_KEY, ACTIVETRACE_SECRET_KEY, and ACTIVETRACE_BASE_URL environment variables for configuration, and follow tracing best practices.";
 
 function CopyableSnippet({
   value,
@@ -91,8 +88,6 @@ export function TracesSetupOnboardingCard({
       waitingFor="Waiting for first trace"
       title="Time to log your first trace, it only takes a minute"
       description="Get your API keys first, then ask your coding agent to add observability with Active Trace to your application."
-      videoSrc="https://static.langfuse.com/prod-assets/onboarding/traces-overview-v1.mp4"
-      videoPosition="bottom"
       steps={[
         {
           title: "Create API keys",
@@ -143,32 +138,14 @@ export function TracesSetupOnboardingCard({
           description:
             "Paste this prompt into Claude, Cursor, Copilot, or another coding agent.",
           content: (
-            <>
-              <CopyableSnippet
-                value={SKILLS_INSTALL_COMMAND}
-                onCopy={() =>
-                  capture("onboarding:tracing_agent_prompt_copy_clicked", {
-                    projectId,
-                  })
-                }
-              />
-              <div className="mt-3">
-                <Link
-                  href={MANUAL_TRACING_DOCS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary inline-flex text-sm underline underline-offset-4 hover:no-underline"
-                  onClick={() =>
-                    capture("onboarding:tracing_manual_docs_link_clicked", {
-                      href: MANUAL_TRACING_DOCS_URL,
-                      projectId,
-                    })
-                  }
-                >
-                  or follow our docs to set up tracing manually
-                </Link>
-              </div>
-            </>
+            <CopyableSnippet
+              value={SKILLS_INSTALL_COMMAND}
+              onCopy={() =>
+                capture("onboarding:tracing_agent_prompt_copy_clicked", {
+                  projectId,
+                })
+              }
+            />
           ),
         },
         {

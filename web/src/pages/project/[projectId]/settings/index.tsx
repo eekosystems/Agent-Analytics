@@ -3,8 +3,6 @@ import { ApiKeyList } from "@/src/features/public-api/components/ApiKeyList";
 import { DeleteProjectButton } from "@/src/features/projects/components/DeleteProjectButton";
 import { HostNameProject } from "@/src/features/projects/components/HostNameProject";
 import RenameProject from "@/src/features/projects/components/RenameProject";
-import { Button } from "@/src/components/ui/button";
-import Link from "next/link";
 import { LlmApiKeyList } from "@/src/features/public-api/components/LLMApiKeyList";
 import { PagedSettingsContainer } from "@/src/components/PagedSettingsContainer";
 import { useQueryProject } from "@/src/features/projects/hooks";
@@ -139,15 +137,12 @@ export const getProjectSettingsPages = ({
     ),
   },
   {
-    title: "MCP & CLI",
+    title: "MCP",
     slug: "developer-tools",
     cmdKKeywords: [
       "mcp",
-      "cli",
-      "skill",
       "agent",
       "model context protocol",
-      "command line",
       "claude code",
       "cursor",
     ],
@@ -297,7 +292,7 @@ const Integrations = (props: { projectId: string }) => {
           <PostHogLogo className="text-foreground mb-4 w-40" />
           <p className="text-primary mb-4 text-sm">
             We have teamed up with PostHog (OSS product analytics) to make
-            Langfuse Events/Metrics available in your Posthog Dashboards.
+            Active Trace Events/Metrics available in your Posthog Dashboards.
           </p>
           <div className="flex items-center gap-2">
             <ActionButton
@@ -307,22 +302,14 @@ const Integrations = (props: { projectId: string }) => {
             >
               Configure
             </ActionButton>
-            <Button asChild variant="ghost">
-              <Link
-                href="https://langfuse.com/integrations/analytics/posthog"
-                target="_blank"
-              >
-                Integration Docs ↗
-              </Link>
-            </Button>
           </div>
         </Card>
 
         <Card className="p-3">
           <MixpanelLogo className="text-foreground mb-4 w-20" />
           <p className="text-primary mb-4 text-sm">
-            Integrate with Mixpanel to sync your Langfuse traces, generations,
-            and scores for advanced product analytics and insights.
+            Integrate with Mixpanel to sync your Active Trace traces,
+            generations, and scores for advanced product analytics and insights.
           </p>
           <div className="flex items-center gap-2">
             <ActionButton
@@ -332,14 +319,6 @@ const Integrations = (props: { projectId: string }) => {
             >
               Configure
             </ActionButton>
-            <Button asChild variant="ghost">
-              <Link
-                href="https://langfuse.com/integrations/analytics/mixpanel"
-                target="_blank"
-              >
-                Integration Docs ↗
-              </Link>
-            </Button>
           </div>
         </Card>
 
@@ -359,14 +338,6 @@ const Integrations = (props: { projectId: string }) => {
             >
               Configure
             </ActionButton>
-            <Button asChild variant="ghost">
-              <Link
-                href="https://langfuse.com/docs/query-traces#blob-storage"
-                target="_blank"
-              >
-                Integration Docs ↗
-              </Link>
-            </Button>
           </div>
         </Card>
 
@@ -377,7 +348,7 @@ const Integrations = (props: { projectId: string }) => {
           </div>
           <p className="text-primary mb-4 text-sm">
             Connect a Slack workspace and create channel automations to receive
-            Langfuse alerts natively in Slack.
+            Active Trace alerts natively in Slack.
           </p>
           <div className="flex items-center gap-2">
             <ActionButton

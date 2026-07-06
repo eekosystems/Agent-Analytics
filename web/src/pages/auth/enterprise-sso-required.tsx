@@ -189,14 +189,7 @@ export default function EnterpriseSsoRequiredPage() {
             <div className="text-destructive mt-4 text-center text-sm font-medium">
               {error}
               <br />
-              Contact{" "}
-              <a
-                href="mailto:support@langfuse.com"
-                className="text-primary-accent hover:text-hover-primary-accent"
-              >
-                support@langfuse.com
-              </a>{" "}
-              if this keeps happening.
+              Please contact your administrator if this keeps happening.
             </div>
           ) : null}
           <div className="text-muted-foreground mt-6 text-center text-sm">
@@ -210,14 +203,7 @@ export default function EnterpriseSsoRequiredPage() {
         </div>
 
         <div className="text-muted-foreground mt-4 text-center text-xs">
-          Need help? Contact{" "}
-          <a
-            href="mailto:support@langfuse.com"
-            className="text-primary-accent hover:text-hover-primary-accent"
-          >
-            support@langfuse.com
-          </a>
-          .
+          Need help? Please contact your administrator.
         </div>
       </div>
     </>

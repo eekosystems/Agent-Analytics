@@ -30,8 +30,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/src/components/ui/popover";
-import Link from "next/link";
-import { usePostHogClientCapture } from "@/src/features/posthog-analytics/usePostHogClientCapture";
 import { type CreateExperiment } from "@/src/features/experiments/types";
 import { MultiStepExperimentForm } from "@/src/features/experiments/components/MultiStepExperimentForm";
 import { RemoteExperimentUpsertForm } from "@/src/features/experiments/components/RemoteExperimentUpsertForm";
@@ -69,7 +67,6 @@ export const CreateExperimentsForm = ({
   }) => Promise<void>;
   showSDKRunInfoPage?: boolean;
 }) => {
-  const capture = usePostHogClientCapture();
   const [showPromptForm, setShowPromptForm] = useState(false);
   const [showRemoteExperimentUpsertForm, setShowRemoteExperimentUpsertForm] =
     useState(false);
@@ -153,15 +150,7 @@ export const CreateExperimentsForm = ({
           <DialogTitle>Run Experiment</DialogTitle>
           <DialogDescription>
             Experiments allow you to test iterations of your application or
-            prompt on a dataset. Learn more about experiments{" "}
-            <Link
-              href="https://langfuse.com/docs/evaluation/dataset-runs/datasets"
-              target="_blank"
-              className="underline"
-            >
-              here
-            </Link>
-            .
+            prompt on a dataset.
           </DialogDescription>
         </DialogHeader>
         <DialogBody className="pb-8">
@@ -173,7 +162,8 @@ export const CreateExperimentsForm = ({
                   via User Interface
                 </CardTitle>
                 <CardDescription>
-                  Test single prompts and model configurations via Active Trace UI.
+                  Test single prompts and model configurations via Active Trace
+                  UI.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -194,18 +184,6 @@ export const CreateExperimentsForm = ({
                 >
                   Configure
                 </Button>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  asChild
-                  onClick={() =>
-                    capture("dataset_run:view_prompt_experiment_docs")
-                  }
-                >
-                  <Link href="https://langfuse.com/docs/evaluation/dataset-runs/native-run">
-                    View Docs
-                  </Link>
-                </Button>
               </CardFooter>
             </Card>
 
@@ -217,8 +195,8 @@ export const CreateExperimentsForm = ({
                 </CardTitle>
                 <CardDescription>
                   Set up an experiment webhook to start remote experiments from
-                  Active Trace. Your service receives the selected dataset and run
-                  config, executes the experiment, and posts results back.
+                  Active Trace. Your service receives the selected dataset and
+                  run config, executes the experiment, and posts results back.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -337,21 +315,6 @@ export const CreateExperimentsForm = ({
                     {webhookActionLabel}
                   </Button>
                 )}
-                <Button
-                  className="w-full"
-                  variant="outline"
-                  asChild
-                  onClick={() =>
-                    capture("dataset_run:view_custom_experiment_docs")
-                  }
-                >
-                  <Link
-                    href="https://langfuse.com/docs/evaluation/dataset-runs/remote-run"
-                    target="_blank"
-                  >
-                    View Docs
-                  </Link>
-                </Button>
               </CardFooter>
             </Card>
           </div>

@@ -14,7 +14,7 @@ import {
 } from "@/src/components/ui/dropdown-menu";
 import { api } from "@/src/utils/api";
 import { useDatasetVersion } from "../hooks/useDatasetVersion";
-import { Clock, MoreVertical, Copy, ExternalLink } from "lucide-react";
+import { Clock, MoreVertical, Copy } from "lucide-react";
 import {
   format,
   isToday,
@@ -86,13 +86,6 @@ export function DatasetVersionHistoryPanel({
       title: "Copied!",
       description: `Version timestamp: ${isoTimestamp}`,
     });
-  };
-
-  const openDocumentation = () => {
-    window.open(
-      "https://langfuse.com/docs/datasets/dataset-versioning",
-      "_blank",
-    );
   };
 
   if (isLoading) {
@@ -197,15 +190,6 @@ export function DatasetVersionHistoryPanel({
             >
               <Copy className="mr-2 h-4 w-4" />
               Copy version timestamp (UTC)
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={(e) => {
-                e.stopPropagation();
-                openDocumentation();
-              }}
-            >
-              <ExternalLink className="mr-2 h-4 w-4" />
-              How to use in experiments
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

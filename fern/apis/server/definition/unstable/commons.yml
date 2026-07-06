@@ -20,7 +20,7 @@ types:
       Where an evaluator comes from.
 
       - `project`: created in your project
-      - `managed`: provided by Langfuse
+      - `managed`: provided by Active Trace
     enum:
       - project
       - managed
@@ -45,7 +45,7 @@ types:
 
       - `active`: enabled and currently runnable.
       - `inactive`: disabled by configuration.
-      - `paused`: enabled, but Langfuse has blocked execution until the underlying issue is resolved.
+      - `paused`: enabled, but Active Trace has blocked execution until the underlying issue is resolved.
     enum:
       - active
       - inactive
@@ -78,7 +78,7 @@ types:
     docs: |
       Optional explicit model configuration for an evaluator.
 
-      If omitted, Langfuse uses the project's default evaluation model.
+      If omitted, Active Trace uses the project's default evaluation model.
       If provided, the model must be available to the project when the evaluator or evaluation rule is enabled.
 
       To discover valid configured `provider` values for a project, call `GET /api/public/llm-connections` and read the `provider` field from the returned connections.
@@ -105,7 +105,7 @@ types:
     docs: |
       Structured score type returned by an evaluator.
 
-      This controls the type of score value Langfuse stores for evaluation results:
+      This controls the type of score value Active Trace stores for evaluation results:
       - `NUMERIC`: a numeric score such as `0.82`
       - `BOOLEAN`: a boolean score such as `true`
       - `CATEGORICAL`: one or more category labels from a fixed list
@@ -418,7 +418,7 @@ types:
     docs: |
       Maps one evaluator variable to one source field from the target object.
 
-      Manual mappings are used for `llm_as_judge` evaluators. `code` evaluators use a fixed runtime mapping managed by Langfuse.
+      Manual mappings are used for `llm_as_judge` evaluators. `code` evaluators use a fixed runtime mapping managed by Active Trace.
 
       How to build a valid mapping list:
       1. Create the evaluator or fetch it with `GET /evaluators/{id}`.

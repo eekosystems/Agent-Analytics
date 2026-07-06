@@ -107,8 +107,8 @@ describe("verifiedDomainRouter.create", () => {
 
     expect(result.domain).toBe(domain);
     expect(result.verifiedAt).toBeNull();
-    expect(result.recordHost).toBe("_langfuse-verification");
-    expect(result.recordValue).toMatch(/^langfuse-verify=/);
+    expect(result.recordHost).toBe("_activetrace-verification");
+    expect(result.recordValue).toMatch(/^activetrace-verify=/);
 
     const row = await prisma.verifiedDomain.findFirst({ where: { domain } });
     expect(row?.organizationId).toBe(org.id);
@@ -252,8 +252,8 @@ describe("verifiedDomainRouter.list", () => {
     expect(domains).toEqual([a, b].sort());
 
     rows.forEach((r) => {
-      expect(r.recordHost).toBe("_langfuse-verification");
-      expect(r.recordValue).toMatch(/^langfuse-verify=/);
+      expect(r.recordHost).toBe("_activetrace-verification");
+      expect(r.recordValue).toMatch(/^activetrace-verify=/);
     });
   });
 });
@@ -324,7 +324,7 @@ describe("verifiedDomainRouter.verify", () => {
       domain,
     });
 
-    resolveTxtMock.mockResolvedValueOnce([["langfuse-verify=wrong"]]);
+    resolveTxtMock.mockResolvedValueOnce([["activetrace-verify=wrong"]]);
 
     await expect(
       caller.verifiedDomain.verify({ orgId: org.id, id: created.id }),

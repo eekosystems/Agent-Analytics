@@ -7,7 +7,6 @@ import {
   Heading,
   Hr,
   Html,
-  Img,
   Section,
   Text,
   Tailwind,
@@ -50,16 +49,6 @@ export const UsageThresholdWarningEmailTemplate = ({
       <Tailwind>
         <Body className="bg-background my-auto mx-auto font-sans">
           <Container className="mx-auto my-10 w-[465px] rounded border border-solid border-[#eaeaea] p-5">
-            <Section className="mt-8">
-              <Img
-                src="https://static.langfuse.com/langfuse_logo_transactional_email.png"
-                width="40"
-                height="40"
-                alt="Active Trace"
-                className="mx-auto my-0"
-              />
-            </Section>
-
             <Section>
               <Heading className="mx-0 my-[30px] p-0 text-center text-2xl font-normal text-black">
                 Usage Threshold Reached
@@ -131,16 +120,6 @@ export const UsageThresholdWarningEmailTemplate = ({
                 <br />
                 • Access unlimited evaluators
                 <br />• Get support via Email/Chat
-              </Text>
-              <Text className="text-gray-700 text-sm leading-6 mt-4">
-                <strong>Startup Program:</strong> Eligible startups get 50% off
-                for their first year.{" "}
-                <a
-                  href="https://langfuse.com/startups"
-                  className="text-blue-600 underline"
-                >
-                  Learn more →
-                </a>
               </Text>
             </Section>
 

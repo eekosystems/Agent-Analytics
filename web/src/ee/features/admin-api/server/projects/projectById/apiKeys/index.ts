@@ -78,16 +78,16 @@ export async function handleCreateApiKey(
       });
     }
 
-    // Validate key format
-    if (!publicKey.startsWith("pk-lf-")) {
+    // Validate key format (accept both the Active Trace and legacy Langfuse prefixes)
+    if (!publicKey.startsWith("pk-at-") && !publicKey.startsWith("pk-lf-")) {
       return res.status(400).json({
-        message: "publicKey must start with 'pk-lf-'",
+        message: "publicKey must start with 'pk-at-' or 'pk-lf-'",
       });
     }
 
-    if (!secretKey.startsWith("sk-lf-")) {
+    if (!secretKey.startsWith("sk-at-") && !secretKey.startsWith("sk-lf-")) {
       return res.status(400).json({
-        message: "secretKey must start with 'sk-lf-'",
+        message: "secretKey must start with 'sk-at-' or 'sk-lf-'",
       });
     }
   }

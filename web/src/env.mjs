@@ -82,7 +82,7 @@ export const env = createEnv({
     SALT: z.string({
       error: (issue) =>
         issue.input === undefined
-          ? "A strong Salt is required to encrypt API keys securely. See: https://langfuse.com/self-hosting#deploy-the-container"
+          ? "A strong Salt is required to encrypt API keys securely. Set the SALT environment variable."
           : "Invalid type",
     }),
     // Add newly signed up users to default org(s) and/or project(s) with role

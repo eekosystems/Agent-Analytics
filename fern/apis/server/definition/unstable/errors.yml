@@ -250,7 +250,7 @@ errors:
     type: PublicApiError
   UnprocessableContentError:
     docs: |
-      The request is syntactically valid, but Langfuse cannot accept it in its current form.
+      The request is syntactically valid, but Active Trace cannot accept it in its current form.
 
       The most important unstable-eval case is `code=evaluator_preflight_failed`, which means the evaluator cannot currently run with the resolved model configuration.
 

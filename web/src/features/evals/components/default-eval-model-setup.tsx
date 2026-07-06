@@ -93,15 +93,7 @@ export function DefaultEvalModelSetup({ projectId }: { projectId: string }) {
               <>
                 No default model set. LLM-as-a-judge evaluations require an LLM
                 connection for scoring. This default is used by all templates
-                that don&apos;t specify their own model.{" "}
-                <a
-                  href="https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge#how-llm-as-a-judge-works"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  Learn more.
-                </a>
+                that don&apos;t specify their own model.
               </>
             }
             className="text-sm font-normal"

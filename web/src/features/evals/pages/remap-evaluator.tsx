@@ -155,16 +155,7 @@ export default function RemapEvaluatorPage() {
         <div>
           <p className="text-muted-foreground text-sm">
             Review your legacy evaluator on the left and configure the new eval
-            settings on the right.{" "}
-            <a
-              href="https://langfuse.com/faq/all/llm-as-a-judge-migration"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-dark-blue font-medium hover:opacity-80"
-            >
-              Follow our step-by-step guide
-            </a>{" "}
-            to upgrade successfully.
+            settings on the right.
           </p>
           {mappedConfig ? (
             <Alert

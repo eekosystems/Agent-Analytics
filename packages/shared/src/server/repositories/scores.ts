@@ -2191,34 +2191,34 @@ export const getScoresForAnalyticsIntegrations = async function* (
 
     yield {
       timestamp: record.timestamp,
-      langfuse_score_name: record.name,
-      langfuse_score_value: record.value,
-      langfuse_score_comment: record.comment,
-      langfuse_score_metadata: record.metadata,
-      langfuse_score_string_value: record.string_value,
-      langfuse_score_data_type: record.data_type,
-      langfuse_trace_name: record.trace_name,
-      langfuse_trace_id: effectiveTraceId,
-      langfuse_user_url: record.trace_user_id
+      activetrace_score_name: record.name,
+      activetrace_score_value: record.value,
+      activetrace_score_comment: record.comment,
+      activetrace_score_metadata: record.metadata,
+      activetrace_score_string_value: record.string_value,
+      activetrace_score_data_type: record.data_type,
+      activetrace_trace_name: record.trace_name,
+      activetrace_trace_id: effectiveTraceId,
+      activetrace_user_url: record.trace_user_id
         ? `${baseUrl}/project/${projectId}/users/${encodeURIComponent(record.trace_user_id as string)}`
         : undefined,
-      langfuse_id: record.id,
-      langfuse_session_id: effectiveSessionId,
-      langfuse_project_id: projectId,
-      langfuse_project_name: projectName,
-      langfuse_user_id: record.trace_user_id || null,
-      langfuse_release: record.trace_release,
-      langfuse_tags: record.trace_tags,
-      langfuse_environment: record.environment,
-      langfuse_event_version: "1.0.0",
-      langfuse_score_entity_type: record.score_trace_id
+      activetrace_id: record.id,
+      activetrace_session_id: effectiveSessionId,
+      activetrace_project_id: projectId,
+      activetrace_project_name: projectName,
+      activetrace_user_id: record.trace_user_id || null,
+      activetrace_release: record.trace_release,
+      activetrace_tags: record.trace_tags,
+      activetrace_environment: record.environment,
+      activetrace_event_version: "1.0.0",
+      activetrace_score_entity_type: record.score_trace_id
         ? "trace"
         : record.score_session_id
           ? "session"
           : record.score_dataset_run_id
             ? "dataset_run"
             : "unknown",
-      langfuse_dataset_run_id: record.score_dataset_run_id,
+      activetrace_dataset_run_id: record.score_dataset_run_id,
       posthog_session_id: record.posthog_session_id ?? null,
       mixpanel_session_id: record.mixpanel_session_id ?? null,
     } satisfies AnalyticsScoreEvent;

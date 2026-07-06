@@ -53,7 +53,7 @@ export const transformTraceForMixpanel = (
   projectId: string,
 ): MixpanelEvent => {
   const insertId = v5(
-    `${projectId}-${trace.langfuse_id}`,
+    `${projectId}-${trace.activetrace_id}`,
     MIXPANEL_UUID_NAMESPACE,
   );
 
@@ -61,21 +61,23 @@ export const transformTraceForMixpanel = (
 
   const { posthog_session_id, mixpanel_session_id, ...otherProps } = trace;
 
-  const hasValidUserId = !isBadDistinctId(trace.langfuse_user_id);
+  const hasValidUserId = !isBadDistinctId(trace.activetrace_user_id);
 
   return {
-    event: "[Langfuse] Trace",
+    event: "[Active Trace] Trace",
     properties: {
       time: new Date(trace.timestamp as Date).getTime(),
       // Empty string signals Mixpanel to distribute the event across shards
       // without attributing it to a user (recommended for non-user events).
-      distinct_id: hasValidUserId ? (trace.langfuse_user_id as string) : "",
+      distinct_id: hasValidUserId ? (trace.activetrace_user_id as string) : "",
       $insert_id: insertId,
-      ...(hasValidUserId ? { $user_id: trace.langfuse_user_id as string } : {}),
+      ...(hasValidUserId
+        ? { $user_id: trace.activetrace_user_id as string }
+        : {}),
       session_id:
-        mixpanel_session_id || trace.langfuse_session_id
+        mixpanel_session_id || trace.activetrace_session_id
           ? (mixpanel_session_id as string) ||
-            (trace.langfuse_session_id as string)
+            (trace.activetrace_session_id as string)
           : undefined,
       ...otherProps,
     },
@@ -87,7 +89,7 @@ export const transformGenerationForMixpanel = (
   projectId: string,
 ): MixpanelEvent => {
   const insertId = v5(
-    `${projectId}-${generation.langfuse_id}`,
+    `${projectId}-${generation.activetrace_id}`,
     MIXPANEL_UUID_NAMESPACE,
   );
 
@@ -95,23 +97,23 @@ export const transformGenerationForMixpanel = (
 
   const { posthog_session_id, mixpanel_session_id, ...otherProps } = generation;
 
-  const hasValidUserId = !isBadDistinctId(generation.langfuse_user_id);
+  const hasValidUserId = !isBadDistinctId(generation.activetrace_user_id);
 
   return {
-    event: "[Langfuse] Generation",
+    event: "[Active Trace] Generation",
     properties: {
       time: new Date(generation.timestamp as Date).getTime(),
       distinct_id: hasValidUserId
-        ? (generation.langfuse_user_id as string)
+        ? (generation.activetrace_user_id as string)
         : "",
       $insert_id: insertId,
       ...(hasValidUserId
-        ? { $user_id: generation.langfuse_user_id as string }
+        ? { $user_id: generation.activetrace_user_id as string }
         : {}),
       session_id:
-        mixpanel_session_id || generation.langfuse_session_id
+        mixpanel_session_id || generation.activetrace_session_id
           ? (mixpanel_session_id as string) ||
-            (generation.langfuse_session_id as string)
+            (generation.activetrace_session_id as string)
           : undefined,
       ...otherProps,
     },
@@ -123,7 +125,7 @@ export const transformScoreForMixpanel = (
   projectId: string,
 ): MixpanelEvent => {
   const insertId = v5(
-    `${projectId}-${score.langfuse_id}`,
+    `${projectId}-${score.activetrace_id}`,
     MIXPANEL_UUID_NAMESPACE,
   );
 
@@ -131,19 +133,21 @@ export const transformScoreForMixpanel = (
 
   const { posthog_session_id, mixpanel_session_id, ...otherProps } = score;
 
-  const hasValidUserId = !isBadDistinctId(score.langfuse_user_id);
+  const hasValidUserId = !isBadDistinctId(score.activetrace_user_id);
 
   return {
-    event: "[Langfuse] Score",
+    event: "[Active Trace] Score",
     properties: {
       time: new Date(score.timestamp as Date).getTime(),
-      distinct_id: hasValidUserId ? (score.langfuse_user_id as string) : "",
+      distinct_id: hasValidUserId ? (score.activetrace_user_id as string) : "",
       $insert_id: insertId,
-      ...(hasValidUserId ? { $user_id: score.langfuse_user_id as string } : {}),
+      ...(hasValidUserId
+        ? { $user_id: score.activetrace_user_id as string }
+        : {}),
       session_id:
-        mixpanel_session_id || score.langfuse_session_id
+        mixpanel_session_id || score.activetrace_session_id
           ? (mixpanel_session_id as string) ||
-            (score.langfuse_session_id as string)
+            (score.activetrace_session_id as string)
           : undefined,
       ...otherProps,
     },
@@ -155,7 +159,7 @@ export const transformEventForMixpanel = (
   projectId: string,
 ): MixpanelEvent => {
   const insertId = v5(
-    `${projectId}-${event.langfuse_id}`,
+    `${projectId}-${event.activetrace_id}`,
     MIXPANEL_UUID_NAMESPACE,
   );
 
@@ -163,19 +167,21 @@ export const transformEventForMixpanel = (
 
   const { posthog_session_id, mixpanel_session_id, ...otherProps } = event;
 
-  const hasValidUserId = !isBadDistinctId(event.langfuse_user_id);
+  const hasValidUserId = !isBadDistinctId(event.activetrace_user_id);
 
   return {
-    event: "[Langfuse] Observation",
+    event: "[Active Trace] Observation",
     properties: {
       time: new Date(event.timestamp as Date).getTime(),
-      distinct_id: hasValidUserId ? (event.langfuse_user_id as string) : "",
+      distinct_id: hasValidUserId ? (event.activetrace_user_id as string) : "",
       $insert_id: insertId,
-      ...(hasValidUserId ? { $user_id: event.langfuse_user_id as string } : {}),
+      ...(hasValidUserId
+        ? { $user_id: event.activetrace_user_id as string }
+        : {}),
       session_id:
-        mixpanel_session_id || event.langfuse_session_id
+        mixpanel_session_id || event.activetrace_session_id
           ? (mixpanel_session_id as string) ||
-            (event.langfuse_session_id as string)
+            (event.activetrace_session_id as string)
           : undefined,
       ...otherProps,
     },

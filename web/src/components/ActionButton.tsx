@@ -9,6 +9,7 @@ import {
 import { HoverCardPortal } from "@radix-ui/react-hover-card";
 import Link from "next/link";
 import { usePostHogClientCapture } from "@/src/features/posthog-analytics/usePostHogClientCapture";
+import { isHiddenExternalLink } from "@/src/utils/hidden-links";
 
 const BUTTON_STATE_MESSAGES = {
   limitReached: (current: number, max: number) =>
@@ -54,6 +55,7 @@ export const ActionButton = React.forwardRef<
   ref,
 ) {
   const capture = usePostHogClientCapture();
+  if (isHiddenExternalLink(href)) return null;
   const hasReachedLimit =
     typeof limit === "number" &&
     limitValue !== undefined &&

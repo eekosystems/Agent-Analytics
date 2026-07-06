@@ -380,7 +380,7 @@ export function DashboardWidget({
         <span className="truncate font-medium" title={widget.data.name}>
           {widget.data.name}{" "}
           {dashboardOwner === "PROJECT" && widget.data.owner === "LANGFUSE"
-            ? " ( 🪢 )"
+            ? " (Active Trace)"
             : null}
         </span>
         <div className="flex space-x-2">

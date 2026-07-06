@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useEffect, useState, useMemo } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 
@@ -390,18 +389,9 @@ export const UpsertModelFormDialog = (({
                       </SelectContent>
                     </Select>
                     <FormDescription>
-                      Optionally, Langfuse can tokenize the input and output of
-                      a generation if no unit counts are ingested. This is
-                      useful for e.g. streamed OpenAI completions. For details
-                      on the supported tokenizers, see the{" "}
-                      <Link
-                        href="https://langfuse.com/docs/model-usage-and-cost"
-                        className="underline"
-                        target="_blank"
-                      >
-                        docs
-                      </Link>
-                      .
+                      Optionally, the input and output of a generation can be
+                      tokenized if no unit counts are ingested. This is useful
+                      for e.g. streamed OpenAI completions.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -420,16 +410,7 @@ export const UpsertModelFormDialog = (({
                         onChange={field.onChange}
                       />
                       <FormDescription>
-                        The config for the tokenizer. Required for openai. See
-                        the{" "}
-                        <Link
-                          href="https://langfuse.com/docs/model-usage-and-cost"
-                          className="underline"
-                          target="_blank"
-                        >
-                          docs
-                        </Link>{" "}
-                        for details.
+                        The config for the tokenizer. Required for openai.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>

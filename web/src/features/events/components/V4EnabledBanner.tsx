@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
-import Link from "next/link";
-import { ZapIcon, X, ExternalLink } from "lucide-react";
+import { ZapIcon, X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { Button } from "@/src/components/ui/button";
 import useLocalStorage from "@/src/components/useLocalStorage";
@@ -10,8 +9,6 @@ import {
 } from "@/src/features/top-banner";
 import { useV4Beta } from "@/src/features/events/hooks/useV4Beta";
 
-const CHANGELOG_URL =
-  "https://langfuse.com/changelog/2026-03-10-simplify-for-scale";
 const DISMISSED_STORAGE_KEY = "v4-beta-enabled-banner:v1:dismissed";
 const V4_BETA_BANNER_ID = "v4-beta-enabled-banner";
 const V4_BETA_BANNER_ORDER = 20;
@@ -67,16 +64,7 @@ export function V4EnabledBanner() {
           <span className="font-semibold">
             Faster Active Trace experience enabled (preview).
           </span>{" "}
-          Missing real-time data? Upgrade your Langfuse SDK to the latest major
-          version.{" "}
-          <Link
-            href={CHANGELOG_URL}
-            target="_blank"
-            className="flex flex-row items-center gap-1 underline underline-offset-2"
-          >
-            Learn more
-            <ExternalLink className="h-3 w-3" />
-          </Link>
+          Missing real-time data? Upgrade your SDK to the latest major version.
         </p>
         <Button
           variant="ghost"

@@ -18,8 +18,8 @@ import * as z from "zod";
 // stale rows from hobby orgs poking at the API directly.
 const VERIFIED_DOMAIN_ENTITLEMENT = "cloud-multi-tenant-sso" as const;
 
-const VERIFICATION_RECORD_PREFIX = "_langfuse-verification";
-const VERIFICATION_VALUE_PREFIX = "langfuse-verify=";
+const VERIFICATION_RECORD_PREFIX = "_activetrace-verification";
+const VERIFICATION_VALUE_PREFIX = "activetrace-verify=";
 
 const domainInput = z
   .string()

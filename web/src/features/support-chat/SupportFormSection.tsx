@@ -221,7 +221,7 @@ export function SupportFormSection({
         if (data.pylonIssueFailed) {
           showErrorToast(
             "Support request was not sent",
-            "Please contact support@langfuse.com",
+            "Please contact your administrator for support.",
           );
           return;
         }

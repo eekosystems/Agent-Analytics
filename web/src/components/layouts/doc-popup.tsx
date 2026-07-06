@@ -7,6 +7,7 @@ import { usePostHogClientCapture } from "@/src/features/posthog-analytics/usePos
 import { cn } from "@/src/utils/tailwind";
 import { Portal } from "@radix-ui/react-hover-card";
 import { Info } from "lucide-react";
+import { sanitizeExternalHref } from "@/src/utils/hidden-links";
 
 export type DocPopupProps = {
   description: React.ReactNode;
@@ -16,10 +17,11 @@ export type DocPopupProps = {
 
 export default function DocPopup({
   description,
-  href,
+  href: hrefProp,
   className,
 }: DocPopupProps) {
   const capture = usePostHogClientCapture();
+  const href = sanitizeExternalHref(hrefProp);
 
   return (
     <HoverCard

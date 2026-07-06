@@ -9,7 +9,6 @@ import {
   Head,
   Heading,
   Html,
-  Img,
   Preview,
   Section,
   Tailwind,
@@ -38,15 +37,6 @@ const ResetPasswordTemplate = ({
       <Tailwind>
         <Body className="mx-auto my-auto bg-background font-sans">
           <Container className="mx-auto my-10 w-[465px] rounded border border-solid border-[#eaeaea] p-5">
-            <Section className="mt-8">
-              <Img
-                src="https://static.langfuse.com/langfuse_logo_transactional_email.png"
-                width="40"
-                height="40"
-                alt="Active Trace"
-                className="mx-auto my-0"
-              />
-            </Section>
             <Heading className="mx-0 my-[30px] p-0 text-center text-xl font-normal text-black">
               {isSetupMode ? (
                 <>
