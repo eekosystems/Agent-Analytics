@@ -658,8 +658,8 @@ export default function EvalsTemplateTable({
           <DialogHeader>
             <DialogTitle>Update running evaluators?</DialogTitle>
             <DialogDescription>
-              Do you want all running evaluators attached to the original
-              Langfuse evaluator to reference your new project-level version?
+              Do you want all running evaluators attached to the original Active
+              Trace evaluator to reference your new project-level version?
               <br />
               <br />
               <strong>Warning:</strong> This might break workflows if you have

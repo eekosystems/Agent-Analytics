@@ -122,9 +122,9 @@ export default function AIFeatureSwitch() {
             </h4>
             <p className="text-sm">
               This setting applies to all users and projects. Any data{" "}
-              <i>can</i> be sent to AWS Bedrock within the Langfuse data region.
-              Traces are sent to Langfuse Cloud in your data region. Your data
-              will not be used for training models. Applicable HIPAA, SOC2,
+              <i>can</i> be sent to AWS Bedrock within the Active Trace data
+              region. Traces are sent to Active Trace in your data region. Your
+              data will not be used for training models. Applicable HIPAA, SOC2,
               GDPR, and ISO 27001 compliance remains intact.
             </p>
           </div>
@@ -148,8 +148,8 @@ export default function AIFeatureSwitch() {
                 AI Data Use for Product/Service Improvement
               </h4>
               <p className="text-sm">
-                Share data about your use of AI with Langfuse for product and
-                service improvement.
+                Share data about your use of AI with Active Trace for product
+                and service improvement.
               </p>
             </div>
             <div className="relative">

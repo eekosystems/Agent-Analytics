@@ -428,7 +428,7 @@ function WebCalloutEndpointDialog(props: {
                     <FormLabel>Endpoint URL</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="https://example.com/langfuse/callout"
+                        placeholder="https://example.com/activetrace/callout"
                         {...field}
                       />
                     </FormControl>

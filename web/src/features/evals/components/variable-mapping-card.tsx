@@ -466,7 +466,7 @@ export const VariableMappingCard = ({
                                               onChange={(e) =>
                                                 field.onChange(e.target.value)
                                               }
-                                              placeholder="Enter langfuse object name"
+                                              placeholder="Enter Active Trace object name"
                                               disabled={disabled}
                                             />
                                           </div>

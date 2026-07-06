@@ -366,7 +366,7 @@ export function TableViewPresetsDrawer({
     } else {
       showErrorToast(
         "Failed to generate permalink",
-        "Please reach out to langfuse support and report this issue.",
+        "Please reach out to Active Trace support and report this issue.",
         "WARNING",
       );
     }

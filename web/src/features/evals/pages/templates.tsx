@@ -35,7 +35,7 @@ export default function TemplatesPage() {
       headerProps={{
         title: "Evaluators",
         help: {
-          description: "View all langfuse managed and custom evaluators.",
+          description: "View all Active Trace managed and custom evaluators.",
           href: "https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge",
         },
         tabsProps: {

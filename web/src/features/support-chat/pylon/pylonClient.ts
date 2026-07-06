@@ -210,7 +210,7 @@ export function buildPylonIssueBodyHtml(params: {
     `<li>steps to reproduce (if relevant)</li>`,
     `</ul>`,
     `<p>Thanks,</p>`,
-    `<p>Team Langfuse</p>`,
+    `<p>Team Active Trace</p>`,
     `<hr>`,
     `<p><b>${escapedEmail} wrote:</b></p>`,
     `<blockquote>${escapedMessage.replace(/\n/g, "<br>")}</blockquote>`,

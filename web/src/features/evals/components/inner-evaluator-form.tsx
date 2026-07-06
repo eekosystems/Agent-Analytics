@@ -251,7 +251,7 @@ const ObservationsPreview = memo(
                     Please verify your SDK version
                   </span>
                   <span className="text-muted-foreground max-w-md text-sm">
-                    We did not find any data ingested with langfuse
+                    We did not find any data ingested with Active Trace
                     OTEL-compatible SDKs in the last 7 days. Observation-level
                     evaluators require JS SDK v4+ or Python SDK v3+. You can
                     still configure this evaluator now—it will start running

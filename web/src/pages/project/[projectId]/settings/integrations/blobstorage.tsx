@@ -623,10 +623,10 @@ const BlobStorageIntegrationSettingsForm = ({
               </FormControl>
               <FormDescription>
                 {integrationType === "AZURE_BLOB_STORAGE"
-                  ? 'Optional prefix path for exported files in your Azure container (e.g., "langfuse-exports/")'
+                  ? 'Optional prefix path for exported files in your Azure container (e.g., "activetrace-exports/")'
                   : integrationType === "S3"
-                    ? 'Optional prefix path for exported files in your S3 bucket (e.g., "langfuse-exports/")'
-                    : 'Optional prefix path for exported files (e.g., "langfuse-exports/")'}
+                    ? 'Optional prefix path for exported files in your S3 bucket (e.g., "activetrace-exports/")'
+                    : 'Optional prefix path for exported files (e.g., "activetrace-exports/")'}
               </FormDescription>
               <FormMessage />
             </FormItem>

@@ -63,7 +63,7 @@ export default function EvaluatorsPage() {
           title: "Evaluators",
           help: {
             description:
-              "Configure a langfuse managed or custom evaluator to evaluate incoming traces.",
+              "Configure an Active Trace managed or custom evaluator to evaluate incoming traces.",
             href: "https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge",
           },
         }}
@@ -81,7 +81,7 @@ export default function EvaluatorsPage() {
           title: "Evaluators",
           help: {
             description:
-              "Configure a langfuse managed or custom evaluator to evaluate incoming traces.",
+              "Configure an Active Trace managed or custom evaluator to evaluate incoming traces.",
             href: "https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge",
           },
           tabsProps: {
