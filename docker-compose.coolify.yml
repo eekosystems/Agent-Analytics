@@ -15,6 +15,7 @@
 services:
   langfuse-worker:
     image: ghcr.io/eekosystems/agent-analytics-worker:latest
+    pull_policy: always
     restart: always
     depends_on: &depends-on
       postgres:
@@ -64,6 +65,7 @@ services:
 
   langfuse-web:
     image: ghcr.io/eekosystems/agent-analytics-web:latest
+    pull_policy: always
     restart: always
     depends_on: *depends-on
     expose:
